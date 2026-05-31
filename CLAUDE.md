@@ -8,7 +8,7 @@ Bu dosya, repo üzerinde çalışan geliştiriciler (insan veya AI) için yönle
 
 2. **"Draft for attorney review" prensibi.** Hiçbir plugin nihai hukuki tavsiye üretmez. Her çıktı taslak halinde, kaynak gösterilerek, avukat onayına hazır şekilde sunulur. Belirsiz konularda konservatif varsayılan kullanılır.
 
-3. **Veri kaynakları açık ve doğrulanabilir.** Her karar/madde atıfı kaynağıyla birlikte verilir. yargi-mcp gibi resmi devlet API'leri tercih edilir. Karar metinlerinin URL'i her zaman dahil edilmelidir.
+3. **Veri kaynakları açık ve doğrulanabilir.** Her karar/madde atıfı kaynağıyla birlikte verilir. Kullanıcının resmi kaynaklardan (kvkk.gov.tr, Resmi Gazete vb.) sağladığı içerik öncelendir. Model eğitim verisinden gelen atıflar `[doğrulanmalı]` etiketi taşır. Karar metinlerinin URL'i her zaman dahil edilmelidir.
 
 4. **Paylaşılan şirket profili.** Anthropic'in `company-profile.md` deseni korunur: ilk plugin'i kuran kullanıcı şirket bilgilerini girer, sonraki plugin'ler okur. Bu Kapital Legal gibi çok partner'lı bürolar için kritik — Sinem KVKK plugin'i kurar, Muhittin marka plugin'i kurarken aynı büro bilgisi otomatik geçer.
 
@@ -31,7 +31,7 @@ Bu dosya, repo üzerinde çalışan geliştiriciler (insan veya AI) için yönle
 
 **İsimlendirme:**
 - Plugin adları: küçük harf, tire ile ayrılmış, `-tr` soneki
-- Skill adları: küçük harf, tire ile ayrılmış, Türkçe fiil tabanı tercih (örn. `aydinlatma-metni-uretici`, `emsal-karar-arayici`)
+- Skill adları: küçük harf, tire ile ayrılmış, Türkçe fiil tabanı tercih (örn. `aydinlatma-metni-uretici`, `karar-analizi`)
 - Türkçe karakter (ı, ş, ğ, ü, ç, ö) **plugin/skill adlarında kullanılmaz** (filesystem uyumu) ama YAML/markdown içeriğinde elbette kullanılır
 
 ## SKILL.md Şablonu
@@ -64,19 +64,20 @@ argument-hint: "[--bayrak açıklaması]"
 İlgili kural numaraları + tetikleyici kontroller
 ```
 
-## yargi-mcp Entegrasyonu
+## Veri Kaynağı İlkesi
 
-Her veri çekme skill'i `yargi-mcp` araçlarını kullanmalıdır:
+Bu repo, **herhangi bir üçüncü taraf MCP sunucusunu gömmez veya zorunlu kılmaz.** Skill'ler üç katmanlı çalışır:
 
-| İşlem | yargi-mcp Aracı |
-|---|---|
-| KVKK kararı arama | `mcp__yargi-mcp__search_kvkk_decisions` |
-| Yargıtay/Danıştay (Bedesten ayağa kalktığında) | `mcp__yargi-mcp__search_bedesten_unified` |
-| BAM/Yerel mahkeme kararı | `mcp__yargi-mcp__search_emsal_detailed_decisions` |
-| Anayasa Mahkemesi | `mcp__yargi-mcp__search_anayasa_unified` |
-| Tam metin çekme | `mcp__yargi-mcp__get_<source>_document_markdown` |
+1. **Model eğitim verisi** — Genel KVKK çerçevesi, m.10/11/12/13 yorumları, geçmiş Kurul kararları. Her atıf `[doğrulanmalı]` etiketli, kullanıcının resmi kaynaktan teyit etmesi şart.
 
-**Kullanıcının yargi-mcp kurmuş olduğu varsayılır.** Skill başında availability check yapılır; yoksa kullanıcı README'ye yönlendirilir.
+2. **Kullanıcı girdisi** — Skill'ler kullanıcının kopyalayıp yapıştırdığı karar metnini veya verdiği URL'i `WebFetch` ile çekip analiz eder. Bu, repo'ya bağımlılık yaratmaz.
+
+3. **Opsiyonel — kullanıcının kendi araçları** — Kullanıcı Claude Cowork'te (veya başka yerde) kendi seçtiği bir araç kurmuşsa Claude o aracı kullanabilir. Skill başında availability check yapılır; yoksa skill 1+2 modunda çalışır, hata vermez.
+
+**Skill geliştirirken:**
+- Hiçbir spesifik MCP aracı adına sabit bağımlılık yazma (örn. `mcp__falanca__filan` çağrısı yerine "kullanıcı bir karar veritabanı aracı kurduysa onu kullan" şeklinde koşullu kontrol).
+- Karar atıfı eklerken `[doğrulanmalı]` etiketi default olsun.
+- Kullanıcıyı `https://www.kvkk.gov.tr` veya ilgili resmi kaynağa yönlendir.
 
 ## Geliştirici Komutları
 

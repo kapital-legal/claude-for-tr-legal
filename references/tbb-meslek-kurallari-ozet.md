@@ -6,7 +6,7 @@
 
 ### Müvekkil Sırlarının Korunması
 - **TBB MK m.36** ve devamı: Avukat müvekkili ile arasındaki bilgileri açıklayamaz.
-- **Plugin etkisi:** Hiçbir skill, müvekkil ismi/dosya bilgisi içeren çıktıyı dış servise göndermemeli. yargi-mcp **resmi devlet API'lerine** bağlı olduğu için doğrudan kullanım sorun değil; ancak müvekkilin spesifik ismini sorguya katmak avukatlık etiğine aykırıdır.
+- **Plugin etkisi:** Hiçbir skill, müvekkil ismi/dosya bilgisi içeren çıktıyı dış servise göndermemeli. Kullanıcının kullandığı opsiyonel araçlar (kendi seçtiği resmi devlet API'leri vb.) resmi kaynaklara bağlı olsa bile, müvekkilin spesifik ismini sorguya katmak avukatlık etiğine aykırıdır. Anonim örnekler ("Şirket [X]") ile çalışılmalıdır.
 - **Test:** Skill çıktısında "Müvekkil [A]", "Şirket [X]" gibi anonim referanslar kullanılmalı. Plugin gerçek müvekkil ismiyle sorgu yaparken kullanıcıyı uyarmalı.
 
 ### Çıkar Çatışması

@@ -4,7 +4,7 @@ description: >
   kvkk-uyum-tr ilk kurulum interview'u. Büronun/şirketin KVKK pratiğini öğrenir,
   CLAUDE.md profilini yazar. "KVKK plugin'i kur", "onboard et", "yeniden ayarla",
   "profili güncelle" söylemlerinde tetiklenir. Diğer tüm skill'ler bu profili okur.
-argument-hint: "[--redo: yeniden çalıştır] [--check-integrations: sadece entegrasyon kontrolü] [--update-profile: paylaşılan büro profilini güncelle]"
+argument-hint: "[--redo: yeniden çalıştır] [--update-profile: paylaşılan büro profilini güncelle]"
 ---
 
 # /kvkk-uyum-tr:cold-start-interview
@@ -33,9 +33,9 @@ Kullanıcı onaylayana kadar devam etme.
 ## Interview Akışı
 
 ### Açılış (3-4 satır)
-> **`kvkk-uyum-tr` KVKK programını yöneten kişiler için — aydınlatma metni, DSAR, VERBİS, ihlal triajı, DPIA.** Sen avukat mısın, KVK uzmanı mı, DPO mu? Farklı bir rol arıyorsan: `/legal-builder-hub:related-skills-surfacer` (gelecekte).
+> **`kvkk-uyum-tr` KVKK programını yöneten kişiler için — aydınlatma metni, ilgili kişi başvurusu, VERBİS, ihlal triajı, risk değerlendirmesi.** Sen avukat mısın, KVK uzmanı mı, DPO mu? Farklı bir rol arıyorsan: `/legal-builder-hub:related-skills-surfacer` (gelecekte).
 >
-> **2 dakika** = rol, hangi tarafta olduğun (sorumlu/işleyen), birincil yargı çevresi + güvenli varsayılanlar. **15 dakika** = aydınlatma metni şablonun, DPIA referansın, veri envanteri seedi, sektör detayı.
+> **2 dakika** = rol, hangi tarafta olduğun (sorumlu/işleyen), birincil yargı çevresi + güvenli varsayılanlar. **15 dakika** = playbook poziisyonların, risk değerlendirme şablonun, veri envanteri seedi, sektör detayı.
 
 ### Hızlı modu (2 dk) — şu soruları sor:
 1. Rolün?
@@ -47,24 +47,24 @@ Kullanıcı onaylayana kadar devam etme.
 
 ### Detaylı mod (15 dk) — yukarıdakilere ek olarak:
 - Mevcut aydınlatma metni varsa PDF/URL paylaş, oku.
-- DPIA örneği varsa oku.
+- Mevcut risk değerlendirme şablonu varsa oku.
 - Veri envanteri (varsa) oku.
 - İlgili kişi başvurularını nasıl yönettiğin
 - İhlal müdahale planı
 - Önemli müvekkil sektörleri / hassas alanlar
 - TBB Meslek Kuralları kontrolünü açık tutmak ister mi?
 
-## Entegrasyon Kontrolü
+## Entegrasyon Kontrolü (Opsiyonel)
 
-`--check-integrations` veya interview sonunda otomatik yap:
+Kullanıcı kendisi bir araç eklediyse availability sun. **Skill bu araçları zorunlu kılmaz** — yoksa skill'ler model + kullanıcı girdisi modunda çalışır.
 
-| Entegrasyon | Test | Sonuç |
+| Araç tipi | Test | Sonuç |
 |---|---|---|
-| yargi-mcp KVKK | `mcp__yargi-mcp__search_kvkk_decisions` ile dummy sorgu | ✓/⚪/✗ |
-| udf-cli | `which udf-cli` | ✓/⚪/✗ |
-| Google Drive MCP | `mcp__claude_ai_Google_Drive__search_files` (1 dosya) | ✓/⚪/✗ |
+| WebFetch (URL okuma — Claude'un built-in) | Test sorgu | ✓ varsayılan |
+| Google Drive bağlayıcı (Claude Cowork) | Bağlayıcı listesinden kontrol | ✓/⚪/✗ |
+| Kullanıcının kurduğu Türk hukuk MCP araçları | Listeden tara | ✓/⚪/✗ |
 
-**Önemli:** Sadece **gerçekten çağrılıp başarılı olan** araçları ✓ işaretle. `.mcp.json`'da tanımlı olduğu için ✓ verme — kullanıcıyı yanıltır. Yapılandırılmış ama test edilmemiş = ⚪.
+**Önemli:** Sadece **gerçekten çağrılıp başarılı olan** araçları ✓ işaretle. Konfigürasyon dosyasında tanımlı olduğu için ✓ verme — kullanıcıyı yanıltır. Yapılandırılmış ama test edilmemiş = ⚪.
 
 ## CLAUDE.md Yazımı
 
@@ -75,11 +75,11 @@ Kullanıcı onaylayana kadar devam etme.
 5. Kullanıcıya özet göster:
    ```
    ✓ KVKK profilin kaydedildi: <yol>
-   ✓ Entegrasyonlar: yargi-mcp KVKK ✓ | udf-cli ⚪
-   
+   ✓ Mevcut araçlar: WebFetch ✓ | (varsa diğer)
+
    İlk komutun:
    - /kvkk-uyum-tr:aydinlatma-metni-uretici
-   - /kvkk-uyum-tr:emsal-karar-arayici
+   - /kvkk-uyum-tr:karar-analizi
    ```
 
 ## Paylaşılan Şirket Profili Yazımı
@@ -91,7 +91,7 @@ Eğer `company-profile.md` yoksa:
 
 ## Hata Durumları
 
-- **yargi-mcp yok:** Uyar, README link ver, devam etmeye izin ver (skill'ler `[verify]` modunda çalışır).
+- **Kullanıcı bir araç kurmadıysa:** Hata değil — skill'ler 1+2 modunda (model + kullanıcı girdisi) çalışır.
 - **`user` scope değil:** Uyar, reinstall öner.
 - **Eksik bilgi:** `[PLACEHOLDER]` bırak, kullanıcı sonra `--redo` ile dönebilir.
 

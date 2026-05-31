@@ -103,8 +103,9 @@ Profil son güncelleme tarihinden 6 aydan fazla geçtiyse → 🟡 uyar.
   ⚠️  Son güncellemeden 8 ay geçti — gözden geçirme önerilir
   ⚠️  KVKK Mart 2026 ABD güvenli ülkeler kararına göre satır 19'u revize et
 
-📚 Referans Kararlar:
-  - KVKK 2024/XXX — VERBİS eksik envanter idari para cezası
+📚 Konuyla ilgili kararlar [doğrulanmalı]:
+  - VERBİS eksik envanter idari para cezası kararları
+  - [Kullanıcı kvkk.gov.tr'den ilgili kararı doğrulamalı]
 
 💡 Önerilen Aksiyon Listesi:
   1. Eksik 3 satırı tamamla

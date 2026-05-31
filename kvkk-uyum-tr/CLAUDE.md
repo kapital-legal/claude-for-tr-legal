@@ -70,14 +70,16 @@ Bu büronun/şirketin işlediği başlıca veri kategorileri:
 - **Risk eşiği:** [Konservatif / Dengeli / Pratik] — Plugin kararsız kalırsa hangi tarafa yatsın
 - **TBB Meslek Kuralları kontrolü:** [Her çıktıda / Hassas konularda / Kapalı]
 
-## 9. Kullanılabilir Entegrasyonlar
+## 9. Kullanılabilir Araçlar (Opsiyonel)
 
-Cold-start sırasında plugin probelemiştir:
+Bu plugin kendi başına üçüncü taraf MCP zorunlu kılmaz. Aşağıdakiler **kullanıcı tarafından isteğe bağlı** olarak kurulmuşsa skill'ler bunları kullanabilir:
 
-- yargi-mcp: [✓ Çalışıyor / ⚪ Kurulu değil / ✗ Hata]
+- WebFetch (Claude built-in): [✓ varsayılan açık]
+- Kullanıcının kurduğu KVKK/yargı arama araçları: [✓ / ⚪ / ✗]
   - Son test: [PLACEHOLDER tarih]
-- udf-cli (UDF dilekçe çıktısı): [✓ / ⚪ / ✗]
 - Google Drive (dosya okuma): [✓ / ⚪ / ✗]
+
+Plugin yokluğunda hata vermez; model + kullanıcı girdisi modunda çalışır.
 
 ## 10. Notlar / Plugin'e Özel Talimatlar
 

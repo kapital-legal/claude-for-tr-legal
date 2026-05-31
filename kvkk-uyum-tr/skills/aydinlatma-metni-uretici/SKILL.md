@@ -38,14 +38,12 @@ Kullanıcıdan veya profilden:
 
 ### 2. Şablon seç
 
-`references/aydinlatma-metni-sablonlari/` altından kanal'a uygun şablonu yükle:
+`references/aydinlatma-metni-sablonlari/` altından kanal'a uygun şablonu yükle (gelecek sürümde eklenecek; mevcutta Claude jenerik akışla üretir):
 - `web-sitesi.md` — site ziyaretçisi için
 - `is-iliskisi.md` — çalışan/aday için
 - `muvekkil-tutma.md` — avukat-müvekkil ilişkisi
 - `sozlesme-genel.md` — B2B/B2C sözleşme tarafı
 - `mobil-uygulama.md` — app kullanıcısı
-
-(Şablonlar gelecek sürümde eklenecek; şu an Claude template'i jenerik akışla üretir.)
 
 ### 3. KVKK m.10 zorunlu unsurları kontrol et
 
@@ -69,7 +67,7 @@ Her aydınlatma metni şunları içermelidir (eksiklik = KVKK ihlali):
 
 - **Açık rıza tek dayanak olarak kullanılıyorsa** → uyar; açık rıza yetersiz olabilir (geri çekilebilir, koşula bağlanamaz)
 - **Özel nitelikli veri işleniyor ama m.6 dayanağı net değil** → uyar
-- **Sınır ötesi aktarım var ama m.9 dayanağı belirsiz** → KVKK'nın güvenli ülkeler listesi henüz daraltıldığından uyar
+- **Sınır ötesi aktarım var ama m.9 dayanağı belirsiz** → KVKK'nın güvenli ülkeler listesi düzenlemesine dikkat
 - **Saklama süresi belirtilmemiş** → "ihtiyaç süresi" gibi belirsiz ifadeler yerine somut süre öner
 
 ### 5. Çıktı
@@ -107,13 +105,21 @@ Her aydınlatma metni şunları içermelidir (eksiklik = KVKK ihlali):
 "Yukarıdaki Aydınlatma Metnini okudum, anladım ve [şu işleme] yönelik kişisel verilerimin işlenmesine açık rıza veriyorum."
 ```
 
-### 6. yargi-mcp ile emsal kontrol
+### 6. Karar referansı (opsiyonel)
 
-Üretilen metnin riskli alanları varsa (açık rıza, özel nitelikli, sınır ötesi):
+Üretilen metnin riskli alanları varsa (açık rıza, özel nitelikli, sınır ötesi), kullanıcıya **eğitim verisinden hatırladığım** KVKK Kurul karar başlıklarını liste halinde sun:
+
 ```
-mcp__yargi-mcp__search_kvkk_decisions(keywords="<ilgili konu>")
+📚 Eğitim verimden ilgili olabileceği değerlendirilen kararlar:
+- 2023/86 [doğrulanmalı] — çalışan e-posta izleme + aydınlatma şartı
+- 2021/1187 [doğrulanmalı] — eski çalışan e-posta erişimi
+- ...
+
+⚠️ Her atıf doğrulamayı bekler. Resmi kaynak: https://www.kvkk.gov.tr
+   Karar numaralarını ve içerikleri kvkk.gov.tr'den teyit et.
 ```
-Çıkan kararları "Bu metni hazırlarken referans olan emsal kararlar" bölümünde liste halinde sun.
+
+Kullanıcı bir karar URL veya metni paylaşırsa `/kvkk-uyum-tr:karar-analizi` skill'ini öner.
 
 ## Çıktı Formatı
 
@@ -129,12 +135,12 @@ mcp__yargi-mcp__search_kvkk_decisions(keywords="<ilgili konu>")
 ⚠️ Dikkat edilmesi gereken noktalar:
 - [her flag bir satır]
 
-📚 Referans KVKK Kararları:
-- [Karar 2023/86, 19.01.2023 — çalışan e-posta izleme]
-- ...
+📚 Konuyla ilgili kararlar [doğrulanmalı]:
+- [Liste — kullanıcının kvkk.gov.tr'den doğrulaması gerek]
 
 ⚠️ Bu çıktı bir TASLAKTIR. Hukuki tavsiye değildir.
 Avukat onayı + müvekkilin durumuna uyum kontrolü gereklidir.
+Karar atıfları kvkk.gov.tr'den doğrulanmalıdır.
 ```
 
 ## TBB Meslek Kuralları

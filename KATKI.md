@@ -6,7 +6,7 @@ Türk avukatlık camiası için açık kaynak bir araç inşa ediyoruz. Katkıla
 
 ### Yüksek Öncelik
 1. **P1/P2 plugin'leri** — KVKK, fikri mülkiyet, şirketler, regülasyon, dava yönetimi skill'leri
-2. **yargi-mcp entegrasyonu** — yeni veri kaynakları, hata düzeltmeleri
+2. **Opsiyonel araç destekleri** — Kullanıcının kendi seçtiği araçlarla skill'lerin daha iyi çalışmasını sağlayacak iyileştirmeler (zorunluluk eklemeden)
 3. **TBB Meslek Kuralları kontrolleri** — her plugin'de uyum gözeticisi
 4. **UDF dilekçe çıktısı** — udf-cli entegrasyonu (Tamamen tipik avukat workflow'u)
 5. **Test senaryoları** — `references/test-cases/` altında gerçek vakaya benzer (anonim) örnekler
@@ -52,7 +52,7 @@ Repo root'undaki `.claude-plugin/marketplace.json` dosyasının `plugins` array'
 Başlık: `feat: <plugin-adı> P<faz> pilot/initial release`
 Açıklama:
 - Hangi mevzuata göre yazıldı (kanun, KHK, yönetmelik numaraları)
-- yargi-mcp hangi araçlarla bağlanıyor
+- Hangi veri kaynaklarını kullanıyor (model eğitim verisi / kullanıcı girdisi / opsiyonel kullanıcı araçları)
 - Hangi TBB Meslek Kuralları kontrolü içeriyor
 - Test edilmiş skill listesi
 

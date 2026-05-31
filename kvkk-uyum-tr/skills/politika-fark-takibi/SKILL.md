@@ -1,15 +1,18 @@
 ---
 name: politika-fark-takibi
 description: >
-  Şirketin mevcut KVKK politikası, aydınlatma metni veya iç prosedürü ile son
-  KVKK Kurulu kararları arasındaki sapmaları (drift) tespit eder. Politika
-  hangi konularda güncellenmesi gerektiğini, hangi yeni kararlara göre revize
-  edileceğini gösterir. "Politika güncelle", "drift kontrol", "yeni kararlar
-  politikamızı etkiler mi?", "KVKK uyum gap analizi" söylemlerinde tetiklenir.
-argument-hint: "[--politika <dosya-yolu>] [--son-N-ay 6|12|24]"
+  Şirketin mevcut KVKK politikası, aydınlatma metni veya iç prosedürü ile
+  kullanıcının sağladığı KVKK Kurulu kararları/güncel mevzuat arasındaki
+  sapmaları (drift) tespit eder. Politika hangi konularda güncellenmesi
+  gerektiğini, hangi yeni kararlara göre revize edileceğini gösterir.
+  "Politika güncelle", "drift kontrol", "yeni kararlar politikamızı etkiler mi?",
+  "KVKK uyum gap analizi" söylemlerinde tetiklenir.
+argument-hint: "[--politika <dosya-yolu>] [--kararlar <dosya-yolu-veya-URLs>]"
 ---
 
 # /kvkk-uyum-tr:politika-fark-takibi
+
+> Bu skill **otomatik karar tarama** yapmaz. Kullanıcı incelenecek kararların URL/metnini sağlamalı, plugin politikayla karşılaştırarak fark üretir.
 
 ## Cold-start kontrolü
 Profil yoksa interview'a yönlendir.
@@ -38,34 +41,35 @@ Politikadaki ana konuları çıkar:
 - İhlal müdahale süreci var mı?
 - Yurt dışı aktarım maddesi var mı?
 
-### 2. Son N ay KVKK kararlarını çek
+### 2. Karşılaştırılacak kararları al
 
-`--son-N-ay` parametresine göre (varsayılan 12 ay):
+Kullanıcı şu üç yoldan biriyle sağlar:
+- **URL listesi:** `https://www.kvkk.gov.tr/Icerik/7593/2023-86, https://...`
+  Plugin `WebFetch` ile her birini çeker.
+- **Yapıştırılmış metinler:** Kullanıcı 3-5 karar metnini bir bütün olarak yapıştırır.
+- **Dosya yolu:** Kullanıcı kararları topladığı bir Markdown/PDF dosyası verir.
 
-```
-mcp__yargi-mcp__search_kvkk_decisions(keywords="çalışan veri izleme")
-mcp__yargi-mcp__search_kvkk_decisions(keywords="müşteri verisi açık rıza")
-mcp__yargi-mcp__search_kvkk_decisions(keywords="yurt dışı aktarım")
-mcp__yargi-mcp__search_kvkk_decisions(keywords="veri saklama süresi")
-mcp__yargi-mcp__search_kvkk_decisions(keywords="ihlal bildirim")
-mcp__yargi-mcp__search_kvkk_decisions(keywords="aydınlatma yetersiz")
-```
+Eğer kullanıcı kararları sağlamamış ise, plugin önerir:
 
-Politika konularına göre hedefli sorgu listesi oluştur.
+> Politika fark analizi için kararları senin sağlaman gerek. İki seçenek var:
+> 1. kvkk.gov.tr → Karar Özetleri sayfasında son 12 ayın kararlarına bak, ilgili olanların URL'ini buraya yapıştır.
+> 2. Eğer "şu konuda son ne çıkmış?" sorun varsa, önce `/kvkk-uyum-tr:karar-analizi` ile spesifik bir karar çek; bu skill ile daha sonra fark karşılaştırması yap.
+>
+> Plugin kendisi karar veritabanına bağlanmaz — bu, müvekkil mahremiyeti ve TBB Meslek Kuralları çerçevesinde bilinçli bir tasarım kararıdır.
 
 ### 3. Fark analizi (gap analysis)
 
 Her politika konusu için:
 
-| Politika Maddesi | Mevcut Durum | KVKK 2025-2026 Yorumu | Sapma? | Aksiyon |
+| Politika Maddesi | Mevcut Durum | Karar Yorumu | Sapma? | Aksiyon |
 |---|---|---|---|---|
-| Çalışan e-posta izleme | "Şirket politikamızca izlenebilir" | Aydınlatma + makul şüphe + sınırlı amaç (Karar 2023/86) | ⚠️ Sapma | Politikaya aydınlatma + amaç sınırı ekle |
-| Saklama süresi | "Ticari ihtiyaç süresince" | Kesin süre + sebep (Karar 2024/XXX) | ⚠️ Belirsiz | Süreleri tablo halinde yaz |
-| Yurt dışı (ABD) aktarım | "Açık rıza ile" | Mart 2026 ABD kararına göre yetersiz | ⚠️ Kritik | M.9 standart sözleşme imzala |
+| Çalışan e-posta izleme | "Şirket politikamızca izlenebilir" | Karar 2023/86: aydınlatma + makul şüphe + sınırlı amaç gerekli | ⚠️ Sapma | Politikaya aydınlatma + amaç sınırı ekle |
+| Saklama süresi | "Ticari ihtiyaç süresince" | [İlgili karar yorumu] | ⚠️ Belirsiz | Süreleri tablo halinde yaz |
+| Yurt dışı (ABD) aktarım | "Açık rıza ile" | [Güncel karar yorumu] | ⚠️ Kritik | KVKK m.9 standart sözleşme imzala |
 | ... | ... | ... | ... | ... |
 
 Sapma seviyeleri:
-- 🟢 **Uyumlu** — politika güncel kararla aynı yönde
+- 🟢 **Uyumlu** — politika kararla aynı yönde
 - 🟡 **Belirsiz** — politika konuyu netleştirmemiş
 - ⚠️ **Sapma** — politika kararla çelişiyor veya eksik
 - 🚨 **Kritik** — politikada KVKK ihlali riski var
@@ -81,8 +85,8 @@ Sapma tespit edilen her madde için:
 > [revize edilmiş hali]
 
 **Dayanak:**
-> KVKK Karar [tarih-no] — [konunun özeti]
-> URL: [karar URL'i]
+> KVKK Karar [tarih-no] [doğrulanmalı] — [konunun özeti]
+> URL: [kullanıcının verdiği URL]
 
 ### 5. Önceliklendirme
 
@@ -95,36 +99,25 @@ Risk × kullanım sıklığı matrisi:
 | Veri saklama | 🟡 Belirsiz | Sürekli | **P2 — Bu ay** |
 | Çerez | 🟢 Uyumlu | Günlük | **P3 — Gözden geçirme** |
 
-### 6. (Opsiyonel) Otomatik takip
-
-Plugin, kullanıcı isterse her ay otomatik çalışacak şekilde:
-- Son ayın KVKK kararlarını tarar
-- Önceki politika ile karşılaştırır
-- Yeni sapmalar varsa e-posta veya panel bildirimi gönderir
-
-(Bu özellik P2'de eklenecek `managed-agent-cookbooks/kvkk-drift-watcher/` ile.)
-
 ## Çıktı
 
 ```
-🔍 KVKK Politika Fark Analizi (12 aylık dönem)
+🔍 KVKK Politika Fark Analizi
 
 📄 İncelenen Politikalar: 3 doküman, 47 madde
-📚 Taranan KVKK Kararları: 156 karar (Mayıs 2025 - Mayıs 2026)
+📚 Karşılaştırılan Kararlar: 12 karar (kullanıcı tarafından sağlandı)
 
 📊 Genel Skor: 23 madde uyumlu, 18 belirsiz, 5 sapma, 1 kritik
 
 🚨 KRİTİK (1):
   1. Yurt dışı (ABD) aktarım açık rızaya dayanıyor
-     → 2026/XXX kararı ile yetersiz
+     → Kullanıcının verdiği [Karar No] [doğrulanmalı] ile yetersiz
      → ACİL: m.9 standart sözleşmesi imzalanmalı
 
 ⚠️ SAPMA (5):
   1. Çalışan e-posta izleme — aydınlatma şartı eksik
-     (Karar 2023/86)
-  2. Eski çalışan hesap erişimi — m.5/2-f gerekçesiz kullanılıyor
-     (Karar 2021/1187)
-  3. ... 3 madde daha
+     (Karar 2023/86 [doğrulanmalı])
+  ...
 
 🟡 BELİRSİZ (18): Detay raporda
 
@@ -134,16 +127,16 @@ Plugin, kullanıcı isterse her ay otomatik çalışacak şekilde:
     2. Çalışan e-posta izleme politikasını güncelle
   P2 (Bu Ay):
     3. Saklama sürelerini tabloya dök
-    4. ... 7 madde
+    ...
   P3 (Gözden Geçirme):
-    8. Çerez politikası (uyumlu, sadece dil iyileştir)
+    ...
 
-📚 Atıfta Bulunulan Kararlar:
-  [Tam liste, URL'leriyle]
+📚 Atıfta Bulunulan Kararlar (kullanıcı tarafından sağlandı):
+  [Tam liste, URL'leriyle, hepsi doğrulama bekleniyor]
 
 ⚠️ Bu rapor TASLAKTIR. Politika değişiklikleri avukat onayı ve
-   yönetim kurulu kararı gerektirir. Bu analiz, yalnızca KVKK
-   Kurulu kararlarına dayalıdır; sektörel düzenlemeler (BDDK,
+   yönetim kurulu kararı gerektirir. Bu analiz yalnızca kullanıcının
+   sağladığı kararlara dayalıdır; sektörel düzenlemeler (BDDK,
    SPK, RTÜK vb.) ayrıca incelenmelidir.
 ```
 

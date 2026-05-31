@@ -1,11 +1,11 @@
 ---
 name: ilgili-kisi-basvurusu
 description: >
-  İlgili kişinin KVKK m.11 başvurusunu (DSAR) analiz eder, 30 günlük yasal süre
-  içinde gerekçeli yanıt taslar. Talep kategorisini (erişim, silme, düzeltme,
-  itiraz, vb.) sınıflandırır, m.13 reddi gerektiğinde dayanağıyla işaretler.
-  "İlgili kişi başvurusu", "DSAR yanıtla", "veri sahibi talebi", "kişisel veri
-  silme talebi", "Veriye erişim talebi" söylemlerinde tetiklenir.
+  İlgili kişinin KVKK m.11 başvurusunu analiz eder, KVKK m.13/2 uyarınca 30 günlük
+  yasal süre içinde gerekçeli yanıt taslar. Talep kategorisini (erişim, silme,
+  düzeltme, itiraz, vb.) sınıflandırır, m.28 reddi gerektiğinde dayanağıyla
+  işaretler. "İlgili kişi başvurusu", "veri sahibi talebi", "kişisel veri silme
+  talebi", "veriye erişim talebi" söylemlerinde tetiklenir.
 argument-hint: "[--basvuru <dosya-yolu>] [--ivedi: 30 günlük süre yaklaşıyor]"
 ---
 
@@ -20,11 +20,11 @@ Profil yoksa kullanıcıyı `/kvkk-uyum-tr:cold-start-interview`'a yönlendir.
 
 - Kullanıcı dosya yolu verdiyse `Read` ile aç.
 - Vermediyse: "Başvurunun metnini paylaş ya da dosya yolu ver" diye sor.
-- KVKK m.13'ün şekil şartlarını kontrol et: yazılı, e-posta veya web form üzerinden yapılmış mı? Kimlik teyidi mevcut mu?
+- KVKK m.13'ün şekil şartlarını kontrol et: yazılı, e-posta veya başvuru kanalı üzerinden yapılmış mı? Kimlik teyidi mevcut mu?
 
 ### 2. Süre takibi
 
-Başvuru tarihini al (dilekçeden veya kullanıcıdan). **30 günlük cevap süresi** (KVKK m.13/2):
+Başvuru tarihini al (dilekçeden veya kullanıcıdan). **KVKK m.13/2: 30 günlük cevap süresi**:
 - ≤ 5 gün kaldıysa → 🚨 KIRMIZI: hızlandırılmış cevap modu
 - ≤ 15 gün kaldıysa → 🟡 SARI: dikkat
 - > 15 gün → 🟢 NORMAL
@@ -92,13 +92,20 @@ Saygılarımızla,
 [Veri Sorumlusu] / [Yetkili Kişi]
 ```
 
-### 6. Emsal kontrolü
+### 6. Karar referansı (opsiyonel)
 
-Talebin kategori veya konu özelinde yargi-mcp ile karar ara:
+Talebin kategori veya konu özelinde **eğitim verimden hatırladığım** Kurul karar başlıklarını listele:
+
 ```
-mcp__yargi-mcp__search_kvkk_decisions(keywords="<talep konusu> başvuru cevap")
+📚 Benzer talep kategorilerinde ilgili olabileceği değerlendirilen kararlar [doğrulanmalı]:
+- [Karar başlığı] — [kısa not]
+- ...
+
+⚠️ Bu liste yön gösterici niteliktedir. Karar numaralarını ve içerikleri 
+   https://www.kvkk.gov.tr 'den teyit edin.
 ```
-"Benzer talepleri KVKK Kurulu nasıl ele almış?" sorusuna referans olur. En son 3 kararı liste halinde özetle.
+
+Kullanıcı bir karar URL veya metni paylaşırsa `/kvkk-uyum-tr:karar-analizi` skill'ini öner.
 
 ### 7. Süre takip uyarısı
 
@@ -128,12 +135,12 @@ Cevap taslağı sonunda:
 
 ⏰ 18 gün kaldı (yasal süre: 30 gün)
 
-📚 Referans kararlar:
-  - KVKK 2023/XXX — "veri silme talebi reddi"
-  - KVKK 2022/YYY — "düzeltme talebi sınırı"
+📚 Konuyla ilgili olabileceği değerlendirilen kararlar [doğrulanmalı]:
+  - [Liste — kvkk.gov.tr'den doğrula]
 
 ⚠️ Bu cevap TASLAKTIR. Avukat onayı gerektirir.
    Kullanılan KVKK madde atıfları doğrulanmalıdır.
+   Karar atıfları kvkk.gov.tr'den teyit edilmelidir.
 ```
 
 ## TBB Meslek Kuralları

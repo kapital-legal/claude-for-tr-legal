@@ -2,10 +2,10 @@
 name: ihlal-triaji
 description: >
   Veri ihlali olayını triyaj eder. KVKK'ya 72 saatlik bildirim yapılması gerekip
-  gerekmediğini değerlendirir, ilgili kişilere bildirim eşiğini kontrol eder,
-  bildirim metinlerini taslar, KVKK kararlarından emsal getirir. "Veri ihlali
-  oldu", "data breach", "bildirim hazırla", "72 saat sayacı", "veri sızıntısı"
-  söylemlerinde tetiklenir.
+  gerekmediğini değerlendirir (KVKK m.12/5 + Kurul'un 24.01.2019 tarih ve 2019/10
+  sayılı kararı), ilgili kişilere bildirim eşiğini kontrol eder, bildirim
+  metinlerini taslar. "Veri ihlali oldu", "data breach", "bildirim hazırla",
+  "72 saat sayacı", "veri sızıntısı" söylemlerinde tetiklenir.
 argument-hint: "[--olay <dosya>] [--ivedi: zaman kritik]"
 ---
 
@@ -14,7 +14,7 @@ argument-hint: "[--olay <dosya>] [--ivedi: zaman kritik]"
 ## Cold-start kontrolü
 Profil yoksa interview'a yönlendir.
 
-> ⏰ **Bu skill zaman kritiktir.** KVKK m.12/5 uyarınca veri ihlali "en kısa sürede" ve **72 saat** içinde bildirilmelidir. Olay tespit anına saatleri saymaya başla.
+> ⏰ **Bu skill zaman kritiktir.** KVKK Kurulu'nun 2019/10 sayılı kararı uyarınca veri ihlali "en kısa sürede" ve **72 saat** içinde bildirilmelidir. Olay tespit anına saatleri saymaya başla.
 
 ## İş Akışı
 
@@ -48,9 +48,10 @@ Renk kodu:
 
 ### 3. Bildirim eşiği kararı
 
-**KVKK m.12/5 + 2019/10 sayılı Kurul kararı:**
+**Hukuki dayanak:** KVKK m.12/5 + Kurul'un 24.01.2019 tarih ve 2019/10 sayılı kararı.
+
 - Veri ihlali "kişilerin hak ve özgürlükleri açısından risk doğuruyorsa" KVKK'ya bildirilmeli.
-- "Yüksek risk" varsa **ilgili kişilere de** bildirim yapılmalı (m.12/5).
+- "Yüksek risk" varsa **ilgili kişilere de** bildirim yapılmalı.
 
 **Yüksek risk göstergeleri:**
 - Özel nitelikli veri (sağlık, biyometrik, ceza, din, etnik)
@@ -75,7 +76,7 @@ Karar tablosu:
 **Veri Sorumlusu:** [Şirket bilgisi]
 **Bildirim Tarihi:** [Bugün + saat]
 **Olay Tespit Tarihi:** [Olay zamanı]
-**Bildirim Süresi:** 72 saat sınırı içinde / dışında (m.12/5 dayanağı)
+**Bildirim Süresi:** 72 saat sınırı içinde / dışında (Kurul'un 2019/10 sayılı kararı dayanağı)
 
 ## 1. Olayın Özeti
 [Ne oldu, ne zaman, nasıl tespit edildi]
@@ -113,7 +114,7 @@ Konu: Önemli Bilgilendirme — Kişisel Verileriniz Hakkında
 
 Sayın [Müşteri Adı],
 
-[Tarih] tarihinde, [şirket]'in sistemleri üzerinde yaşanan bir veri olayı sonucunda kişisel verilerinizin etkilenmiş olabileceğini bildirmek isteriz. KVKK m.12/5 uyarınca, durumu en kısa sürede iletme yükümlülüğümüz çerçevesinde sizi bilgilendiriyoruz.
+[Tarih] tarihinde, [şirket]'in sistemleri üzerinde yaşanan bir veri olayı sonucunda kişisel verilerinizin etkilenmiş olabileceğini bildirmek isteriz. KVKK Kurulu'nun 2019/10 sayılı kararı uyarınca, durumu en kısa sürede iletme yükümlülüğümüz çerçevesinde sizi bilgilendiriyoruz.
 
 ## Etkilenen Veriler
 [Hangi veriler — gizliliği gözeterek]
@@ -133,24 +134,24 @@ Saygılarımızla,
 [Şirket]
 ```
 
-### 6. Emsal kontrolü
+### 6. Karar referansı (opsiyonel)
 
 ```
-mcp__yargi-mcp__search_kvkk_decisions(keywords="veri ihlali bildirim cezası")
-mcp__yargi-mcp__search_kvkk_decisions(keywords="72 saat geç bildirim")
+📚 Veri ihlali bildirim cezası kararları [doğrulanmalı]:
+  - 2019/10 sayılı Kurul kararı — 72 saat ilkesi (asıl çerçeve)
+  - Diğer ilgili kararlar [doğrulanmalı]
+
+⚠️ Karar atıflarını https://www.kvkk.gov.tr 'den doğrula.
 ```
 
-İlgili 3 kararı özetle. Özellikle:
-- Geç bildirim cezaları
-- "Yüksek risk" yorumlama kararları
-- İlgili kişi bildirimi tartışmalı vakalar
+Kullanıcı bir karar URL veya metni paylaşırsa `/kvkk-uyum-tr:karar-analizi` skill'ini öner.
 
 ## Çıktı
 
 ```
 🚨 VERİ İHLALİ TRİAJI
 
-⏰ Sayaç: 53 saat kaldı (KVKK m.12/5: 72 saat)
+⏰ Sayaç: 53 saat kaldı (Kurul 2019/10: 72 saat)
 
 📊 Risk Skoru: YÜKSEK
   Sebepler: Özel nitelikli sağlık verisi + 247 etkilenen kişi
@@ -163,9 +164,9 @@ mcp__yargi-mcp__search_kvkk_decisions(keywords="72 saat geç bildirim")
 
 📄 İlgili Kişi Bildirim Taslağı: [yukarıdaki]
 
-📚 Referans Kararlar:
-  - KVKK 2023/XXX — Geç bildirim 250.000 TL idari para cezası
-  - KVKK 2022/YYY — "Yüksek risk" yorumlaması
+📚 İlgili Kurul kararları [doğrulanmalı]:
+  - 2019/10 — 72 saat ilkesi
+  - [diğerleri — kvkk.gov.tr'den doğrula]
 
 🎯 Sıradaki Adımlar:
   1. KVKK bildirim taslağını avukat onayına götür (en geç 24 saat)
@@ -175,6 +176,7 @@ mcp__yargi-mcp__search_kvkk_decisions(keywords="72 saat geç bildirim")
 
 ⚠️ Bu çıktı TASLAKTIR. Veri ihlali kritiktir — avukat
    ve veri sorumlusu temsilcisi onayı vakit kaybetmeden alınmalıdır.
+   Karar atıfları kvkk.gov.tr'den doğrulanmalıdır.
 ```
 
 ## TBB Meslek Kuralları
