@@ -13,7 +13,7 @@ KVKK pratiğindeki **6 ana iş akışını** otomatize eder; her çıktı avukat
 1. **Aydınlatma metni üretimi** — KVKK m.10'a uygun, sektör/iş türü/veri kategorisine özgü
 2. **İlgili kişi başvurusu yanıtlama** — KVKK m.13/2 30 günlük yasal süre takibi + gerekçeli yanıt
 3. **VERBİS uyum kontrolü** — Kayıt durumu, 6 aylık veri envanteri, sektörel zorunluluk
-4. **Veri ihlali triajı** — KVKK m.12/5 + Kurul kararı uyarınca 72 saatlik bildirim zarfı, ilgili kişi bildirim gerekçesi
+4. **Veri ihlali triajı** — KVKK m.12/5 + Kurul'un 24.01.2019 tarih ve 2019/10 sayılı kararı uyarınca 72 saatlik bildirim zarfı, ilgili kişi bildirim gerekçesi
 5. **KVKK iyi uygulama risk değerlendirmesi** — Yüksek riskli işleme faaliyetleri için (KVKK'da yasal DPIA zorunluluğu yoktur; bu skill iyi uygulama olarak risk haritalama yapar)
 6. **Politika sapma takibi** — Şirket politikası vs kullanıcının sağladığı son kararlar arasındaki diff
 

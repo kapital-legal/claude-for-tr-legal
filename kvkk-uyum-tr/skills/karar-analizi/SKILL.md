@@ -14,6 +14,25 @@ argument-hint: "[url <karar-url>] [veya kullanıcı yapıştırılmış metin il
 
 > **Bu skill kullanıcının sağladığı kararı analiz eder.** Plugin **canlı KVKK veritabanına bağlanmaz**. Resmi kaynak: https://www.kvkk.gov.tr — kullanıcı buradan ilgili kararı bulur, URL veya metni bu skill'e verir.
 
+## ⚠️ ZORUNLU KURAL — Yapıştırılan Metin Olmadan Çalışma
+
+**Eğer kullanıcı bir karar URL'i, dosya yolu veya yapıştırılmış metin SAĞLAMAMIŞSA:**
+
+1. Skill durur. Serbest hatırlamayla karar üretmez.
+2. Kullanıcıya şu mesajı verir:
+
+   > Bu skill bir karar metni veya URL üzerinde çalışır — kendi başına KVKK veritabanına bağlanmaz. Lütfen şunlardan birini yap:
+   >
+   > 1. **URL ver:** kvkk.gov.tr/Icerik/... gibi resmi karar URL'i yapıştır.
+   > 2. **Metin yapıştır:** Karar tam metnini doğrudan buraya kopyala.
+   > 3. **Dosya yolu:** PDF/MD/TXT karar dosyası varsa yolunu ver (örn. `~/Downloads/karar.pdf`).
+   >
+   > Eğer "şu konuda ne diyor?" sorum varsa kvkk.gov.tr → Karar Özetleri sayfasında ilgili konuyu ara, kararı bul, bana getir.
+
+3. Bu durumda spesifik karar numarası, tarihi veya alıntı **asla** üretmez.
+
+Bu kural sert prompt-level kuraldır; pazarlık edilemez. Detay: `references/karar-atif-kurallari.md`
+
 ## Cold-start kontrolü
 Profil yoksa interview'a yönlendir.
 
@@ -49,8 +68,8 @@ Aşağıdaki yapıyla özet çıkar:
 ```markdown
 # Karar Özeti
 
-**Karar No:** [örn. 2023/86]
-**Tarih:** [örn. 19.01.2023]
+**Karar No:** [Kullanıcının sağladığı metinden çıkar — örnek vermem]
+**Tarih:** [Kullanıcının sağladığı metinden çıkar — örnek vermem]
 **Konu:** [Bir cümlede ne hakkında]
 **URL:** [orijinal kaynak]
 
@@ -90,18 +109,24 @@ Kullanıcının profilinden (`CLAUDE.md`):
 - /kvkk-uyum-tr:aydinlatma-metni-uretici
 ```
 
-### 4. Benzer kararlar (opsiyonel)
+### 4. Benzer konular (opsiyonel)
 
-Eğitim verisinden hatırlanan ve aynı konuyu içeren kararları öner:
+**ZORUNLU KURAL:** Spesifik karar numarası uydurma. Yalnızca **konu başlıkları** sun, numara verme.
 
 ```
-📚 Benzer eksendeki ilgili kararlar [doğrulanmalı]:
-- 2021/1187 [doğrulanmalı] — eski çalışan e-posta erişimi
-- 2022/861 [doğrulanmalı] — ticari e-posta toplama
-- ...
+📚 Aynı eksendeki konularda KVKK Kurul kararları mevcut olabilir
+   (numaraları doğrulanmamış — kvkk.gov.tr'den arama önerisi):
 
-⚠️ Bu liste yön gösterici. Kullanıcı kvkk.gov.tr'den her kararı doğrulamalı.
+- Eski çalışan kurumsal e-posta hesabına erişim
+- Ticari e-posta toplama / pazarlama izni
+- [vb. konu başlıkları]
+
+⚠️ Numara/tarih kesin doğrulanmadan üretilmez. Konu üzerinden
+   kvkk.gov.tr → Karar Özetleri sayfasında arama yap, ilgili kararı
+   bana yapıştır; bu skill'i tekrar çağırırsan detaylı analiz yaparım.
 ```
+
+Bu disiplin `references/karar-atif-kurallari.md` ile zorunlu kılınmıştır. Detaylı pratik test ve gerekçe orada.
 
 ### 5. TBB Meslek Kuralları kontrolü
 
@@ -114,8 +139,8 @@ Karar analizinde plugin şu durumlarda uyarı verir:
 ```
 ✓ Karar analizi tamamlandı
 
-📋 Karar: KVKK 2023/86 (19.01.2023) [doğrulanmalı]
-   Konu: Çalışan kurumsal e-posta izleme
+📋 Karar: KVKK [karar no — kullanıcının verdiği metinden] ([tarih])
+   Konu: [Kararın gerçek konusu — kullanıcının sağladığı metinden]
 
 📄 Özet:
    [Yukarıdaki yapı]

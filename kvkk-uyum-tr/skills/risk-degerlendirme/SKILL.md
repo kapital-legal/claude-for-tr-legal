@@ -151,12 +151,19 @@ Aşağıdaki tetikleyicilerin bir veya daha fazlası bulunuyorsa risk değerlend
 
 ### 5. Karar referansı (opsiyonel)
 
+**ZORUNLU KURAL:** Spesifik karar numarası/tarihi uydurma. Yalnızca **konu başlıkları** sun.
+
 ```
-📚 Faaliyet türünüze yakın Kurul kararları [doğrulanmalı]:
-- [Listele — kullanıcının kvkk.gov.tr'den doğrulaması gerek]
+📚 Faaliyet türünüze yakın konularda KVKK Kurul kararları mevcut olabilir
+   (numara doğrulanmamış):
+- [Sadece konu başlığı, numara/tarih verme]
+
+⚠️ kvkk.gov.tr → Karar Özetleri'nde bu konularda arama yap;
+   bulduğun kararı bana yapıştır, /kvkk-uyum-tr:karar-analizi
+   ile detaylı analiz yaparım.
 ```
 
-Kullanıcı bir karar URL veya metni paylaşırsa `/kvkk-uyum-tr:karar-analizi` skill'ini öner.
+Bu disiplin sert prompt-level kuraldır. Detay: `references/karar-atif-kurallari.md`
 
 ## Çıktı
 
@@ -176,8 +183,9 @@ Kullanıcı bir karar URL veya metni paylaşırsa `/kvkk-uyum-tr:karar-analizi` 
   - R3: Yetkisiz erişim kalıcı log riski
     → Önlem: Erişim logu + 2-faktör
 
-📚 Konuyla ilgili Kurul kararları [doğrulanmalı]:
-  - [Listele — kvkk.gov.tr'den doğrula]
+📚 Konuyla ilgili Kurul kararları (numara verilmiyor — doğrulanmamış):
+  - [Yalnızca konu başlığı, "2023/XXX" tarzı sayı asla yazılmaz]
+  - kvkk.gov.tr'den arama yap → /kvkk-uyum-tr:karar-analizi'ne yapıştır
 
 📋 Aksiyon Listesi:
   1. Risk değerlendirmesini şirket içi yönetim kuruluna sun

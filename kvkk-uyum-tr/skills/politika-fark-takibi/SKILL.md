@@ -63,7 +63,7 @@ Her politika konusu için:
 
 | Politika Maddesi | Mevcut Durum | Karar Yorumu | Sapma? | Aksiyon |
 |---|---|---|---|---|
-| Çalışan e-posta izleme | "Şirket politikamızca izlenebilir" | Karar 2023/86: aydınlatma + makul şüphe + sınırlı amaç gerekli | ⚠️ Sapma | Politikaya aydınlatma + amaç sınırı ekle |
+| Çalışan e-posta izleme | "Şirket politikamızca izlenebilir" | Kullanıcının verdiği karar: aydınlatma + makul şüphe + sınırlı amaç gerekli | ⚠️ Sapma | Politikaya aydınlatma + amaç sınırı ekle |
 | Saklama süresi | "Ticari ihtiyaç süresince" | [İlgili karar yorumu] | ⚠️ Belirsiz | Süreleri tablo halinde yaz |
 | Yurt dışı (ABD) aktarım | "Açık rıza ile" | [Güncel karar yorumu] | ⚠️ Kritik | KVKK m.9 standart sözleşme imzala |
 | ... | ... | ... | ... | ... |
@@ -116,7 +116,7 @@ Risk × kullanım sıklığı matrisi:
 
 ⚠️ SAPMA (5):
   1. Çalışan e-posta izleme — aydınlatma şartı eksik
-     (Karar 2023/86 [doğrulanmalı])
+     (Kullanıcının sağladığı karara göre — örn. "Karar [No]" yapıştırılan metinden alınır)
   ...
 
 🟡 BELİRSİZ (18): Detay raporda

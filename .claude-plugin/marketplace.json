@@ -10,7 +10,7 @@
       "name": "kvkk-uyum-tr",
       "displayName": "KVKK Uyum (TR)",
       "source": "./kvkk-uyum-tr",
-      "description": "KVKK m.10 aydınlatma metni üretir, ilgili kişi başvurularını (KVKK m.13/2 30 günlük süre içinde) yanıtlar, VERBİS uyumunu kontrol eder, veri ihlali triajı yapar (72 saatlik bildirim, KVKK m.12/5), iyi uygulama düzeyinde veri koruma risk değerlendirmesi üretir ve kullanıcının sağladığı karar metinlerini Türk hukuku perspektifinden analiz eder. Çıktılar avukat onayına hazır taslaktır.",
+      "description": "KVKK m.10 aydınlatma metni üretir, ilgili kişi başvurularını (KVKK m.13/2 30 günlük süre içinde) yanıtlar, VERBİS uyumunu kontrol eder, veri ihlali triajı yapar (72 saatlik bildirim — KVKK m.12/5 + Kurul'un 2019/10 sayılı kararı), iyi uygulama düzeyinde veri koruma risk değerlendirmesi üretir ve kullanıcının sağladığı karar metinlerini Türk hukuku perspektifinden analiz eder. Çıktılar avukat onayına hazır taslaktır.",
       "author": {
         "name": "Kapital Legal"
       }

@@ -107,19 +107,22 @@ Her aydınlatma metni şunları içermelidir (eksiklik = KVKK ihlali):
 
 ### 6. Karar referansı (opsiyonel)
 
-Üretilen metnin riskli alanları varsa (açık rıza, özel nitelikli, sınır ötesi), kullanıcıya **eğitim verisinden hatırladığım** KVKK Kurul karar başlıklarını liste halinde sun:
+**ZORUNLU KURAL:** Üretilen metnin riskli alanları varsa (açık rıza, özel nitelikli, sınır ötesi), yalnızca **konu başlıklarını** sun — karar numarası, tarihi veya alıntısı asla uydurma.
 
 ```
-📚 Eğitim verimden ilgili olabileceği değerlendirilen kararlar:
-- 2023/86 [doğrulanmalı] — çalışan e-posta izleme + aydınlatma şartı
-- 2021/1187 [doğrulanmalı] — eski çalışan e-posta erişimi
-- ...
+📚 Şu konularda KVKK Kurul kararları olabilir (numaraları doğrulanmamış):
+- Çalışan kurumsal e-posta izleme + aydınlatma yükümlülüğü
+- Eski çalışan hesabına erişim
+- Açık rıza ile pazarlama ileti / cookie / çerez ayrımı
+- [vb. konu başlıkları]
 
-⚠️ Her atıf doğrulamayı bekler. Resmi kaynak: https://www.kvkk.gov.tr
-   Karar numaralarını ve içerikleri kvkk.gov.tr'den teyit et.
+⚠️ Spesifik karar numarası/tarihi vermiyorum — halüsinasyon riski yüksek.
+   kvkk.gov.tr → Karar Özetleri sayfasında bu konuları ara,
+   bulduğun kararı /kvkk-uyum-tr:karar-analizi ile bana yapıştır,
+   detaylı analiz yaparım.
 ```
 
-Kullanıcı bir karar URL veya metni paylaşırsa `/kvkk-uyum-tr:karar-analizi` skill'ini öner.
+Bu disiplin sert prompt-level kuraldır. Detay: `references/karar-atif-kurallari.md`
 
 ## Çıktı Formatı
 
@@ -135,8 +138,9 @@ Kullanıcı bir karar URL veya metni paylaşırsa `/kvkk-uyum-tr:karar-analizi` 
 ⚠️ Dikkat edilmesi gereken noktalar:
 - [her flag bir satır]
 
-📚 Konuyla ilgili kararlar [doğrulanmalı]:
-- [Liste — kullanıcının kvkk.gov.tr'den doğrulaması gerek]
+📚 Konu başlıkları (numarasız — doğrulanmamış):
+- [Sadece konu adı yaz, "2023/86" gibi sayı verme]
+- kvkk.gov.tr/Icerik'ten ilgili konuyu ara, kararı bul, /kvkk-uyum-tr:karar-analizi ile yapıştır
 
 ⚠️ Bu çıktı bir TASLAKTIR. Hukuki tavsiye değildir.
 Avukat onayı + müvekkilin durumuna uyum kontrolü gereklidir.

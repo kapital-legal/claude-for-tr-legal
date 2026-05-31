@@ -37,7 +37,7 @@ Bu repo, **Anthropic'in iskeletini Türk hukukuna giydirir.** Plugin patternleri
 
 ## Hızlı Başlangıç
 
-> ⚠️ **Önkoşul:** Claude Code veya Claude Cowork erişimi (Pro/Max abonelik).
+> ⚠️ **Önkoşul:** Claude Code veya Claude Cowork erişimi (Pro/Max abonelik ya da API kredisi).
 
 ### 1. Marketplace'i ekle
 
@@ -87,7 +87,7 @@ Bu repo **kendi başına resmi karar veritabanı entegrasyonu içermez**. Plugin
 
 - **Model eğitim verisinden** genel KVKK çerçevesi ve örnek kararları sunar (her zaman `[doğrulanmalı]` etiketli)
 - **Kullanıcının manuel sağladığı** karar URL/metinlerini analiz eder (örn. kvkk.gov.tr'den kopyaladığınız bir karar metni)
-- İsteğe bağlı olarak **kullanıcının kendi makinesinde kurduğu** üçüncü taraf araçlarla (örn. Anthropic'in resmi Marka-Patent connector'ı, kullanıcının kendi seçtiği KVKK arama araçları) çalışabilir — bu araçlar bu repo'nun parçası **değildir**, kullanıcı sorumluluğundadır
+- İsteğe bağlı olarak **kullanıcının kendi makinesinde kurduğu** üçüncü taraf araçlarla (örn. üçüncü taraf TÜRKPATENT MCP connector'ları veya kullanıcının kendi seçtiği KVKK arama araçları — **tamamı kullanıcı sorumluluğunda**) çalışabilir. Bu araçlar bu repo'nun parçası **değildir**; Kapital Legal ve repo maintainer'ları bu üçüncü taraf araçların doğruluğundan, sürdürülebilirliğinden veya güvenliğinden sorumlu değildir.
 
 **Resmi karar/mevzuat kaynakları:**
 - KVKK Kurul kararları: https://www.kvkk.gov.tr
@@ -97,8 +97,8 @@ Bu repo **kendi başına resmi karar veritabanı entegrasyonu içermez**. Plugin
 
 ## Bağımlılıklar
 
-- **Claude Code** veya Claude Cowork (Pro/Max abonelik) — **tek zorunluluk**
-- (Opsiyonel) Anthropic ekosisteminin sunduğu Marka-Patent / Google Drive / Gmail connector'ları, kullanıcı isterse Claude Cowork üzerinden ayrı olarak bağlanabilir
+- **Claude Code** veya Claude Cowork (Pro/Max abonelik ya da API kredisi) — **tek zorunluluk**
+- (Opsiyonel) Üçüncü taraf MCP connector'ları (TÜRKPATENT veya KVKK arama için topluluk projeleri, Claude.ai/Cowork üzerinden Google Drive/Gmail entegrasyonları vb.) — kullanıcı bunları **kendi sorumluluğunda** ekler; bu repo hiçbirini gerektirmez veya onaylamaz
 
 Bu repo, herhangi bir üçüncü taraf MCP sunucusunu zorunlu kılmaz veya gömmez.
 
@@ -149,6 +149,6 @@ Bu **yalnızca geliştirme** içindir — son kullanıcılar 1. adımdaki GitHub
 
 **Claude for TR Legal** is a community port of [Anthropic's claude-for-legal](https://github.com/anthropics/claude-for-legal) for Turkish law practice. While Anthropic's plugins target US/UK law (FMLA, USPTO, GDPR/CCPA), this repo adapts the same patterns to Turkish regulations: **KVKK** (privacy), **SMK 6769** (trademarks/patents), **TTK** (commercial code), **TBB** professional rules.
 
-The repo preserves Anthropic's architectural patterns (cold-start interview, shared company profile, "draft for attorney review" disclaimers) while translating terminology and Turkish legal framing. **This repo does not bundle or require any third-party MCP servers.** Users may optionally connect their own tools (such as Anthropic's official Trademark/Patent connector via Claude Cowork) at their own discretion. Apache 2.0 licensed. Maintained by Kapital Legal (İzmir).
+The repo preserves Anthropic's architectural patterns (cold-start interview, shared company profile, "draft for attorney review" disclaimers) while translating terminology and Turkish legal framing. **This repo does not bundle or require any third-party MCP servers.** Users may optionally connect their own tools (community TÜRKPATENT/KVKK MCP connectors, Google Drive/Gmail integrations via Claude.ai, etc.) at their own discretion. Apache 2.0 licensed. Maintained by Kapital Legal (İzmir).
 
 **Current status:** Pilot — `kvkk-uyum-tr` (KVKK compliance) v0.1.0. See roadmap above.

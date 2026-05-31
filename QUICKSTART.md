@@ -4,7 +4,7 @@
 
 ## Ön Koşullar
 
-- **Claude Code veya Claude Cowork** — Pro/Max abonelik gerekir.
+- **Claude Code veya Claude Cowork** — Pro/Max abonelik ya da API kredisi gerekir.
 
 Başka hiçbir üçüncü taraf araç zorunlu değildir. Plugin tüm temel işlevleri model + kullanıcının sağladığı içerikle yürütür.
 
@@ -64,7 +64,7 @@ veya:
 | `aydinlatma-metni-uretici` | KVKK m.10 aydınlatma metni üretir |
 | `ilgili-kisi-basvurusu` | İlgili kişi başvurularına (KVKK m.13/2) 30 günlük süre içinde yanıt taslar |
 | `verbis-uyum-kontrolu` | VERBİS kayıt + güncelleme kontrolü, 6 aylık veri envanteri |
-| `ihlal-triaji` | 72 saatlik KVKK bildirim zarfı (m.12/5 + Kurul kararı) |
+| `ihlal-triaji` | 72 saatlik KVKK bildirim zarfı (m.12/5 + Kurul'un 2019/10 sayılı kararı) |
 | `risk-degerlendirme` | KVKK iyi uygulama düzeyinde veri koruma risk değerlendirmesi |
 | `politika-fark-takibi` | Şirket politikası vs kullanıcının sağladığı son kararlar arasındaki sapmaları analiz eder |
 | `karar-analizi` | Kullanıcının kvkk.gov.tr veya başka kaynaklardan sağladığı karar metnini Türk hukuku perspektifinden analiz eder; eğitim verisinden ilgili konularda bilgi sağlar (her atıf `[doğrulanmalı]` etiketli) |

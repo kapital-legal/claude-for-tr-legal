@@ -94,18 +94,20 @@ Saygılarımızla,
 
 ### 6. Karar referansı (opsiyonel)
 
-Talebin kategori veya konu özelinde **eğitim verimden hatırladığım** Kurul karar başlıklarını listele:
+**ZORUNLU KURAL:** Spesifik karar numarası uydurma. Yalnızca **konu başlığı** sun.
 
 ```
-📚 Benzer talep kategorilerinde ilgili olabileceği değerlendirilen kararlar [doğrulanmalı]:
-- [Karar başlığı] — [kısa not]
+📚 Bu talep kategorisinde KVKK Kurul kararları mevcut olabilir
+   (numara/tarih doğrulanmamış):
+- [Konu başlığı 1 — sadece konu, numara yok]
 - ...
 
-⚠️ Bu liste yön gösterici niteliktedir. Karar numaralarını ve içerikleri 
-   https://www.kvkk.gov.tr 'den teyit edin.
+⚠️ Sayı uydurmuyorum. kvkk.gov.tr → Karar Özetleri'nde
+   konuyu ara, ilgili kararı bana yapıştır;
+   /kvkk-uyum-tr:karar-analizi ile detaylı yorumlayayım.
 ```
 
-Kullanıcı bir karar URL veya metni paylaşırsa `/kvkk-uyum-tr:karar-analizi` skill'ini öner.
+Bu disiplin sert prompt-level kuraldır. Detay: `references/karar-atif-kurallari.md`
 
 ### 7. Süre takip uyarısı
 
@@ -135,8 +137,9 @@ Cevap taslağı sonunda:
 
 ⏰ 18 gün kaldı (yasal süre: 30 gün)
 
-📚 Konuyla ilgili olabileceği değerlendirilen kararlar [doğrulanmalı]:
-  - [Liste — kvkk.gov.tr'den doğrula]
+📚 Bu konuda KVKK Kurul kararları mevcut olabilir (numarasız):
+  - [Sadece konu başlığı, "2023/XXX" gibi sayı yok]
+  - kvkk.gov.tr'den teyit edip /kvkk-uyum-tr:karar-analizi'ne yapıştırın
 
 ⚠️ Bu cevap TASLAKTIR. Avukat onayı gerektirir.
    Kullanılan KVKK madde atıfları doğrulanmalıdır.

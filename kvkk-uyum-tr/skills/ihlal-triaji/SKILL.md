@@ -136,15 +136,22 @@ Saygılarımızla,
 
 ### 6. Karar referansı (opsiyonel)
 
-```
-📚 Veri ihlali bildirim cezası kararları [doğrulanmalı]:
-  - 2019/10 sayılı Kurul kararı — 72 saat ilkesi (asıl çerçeve)
-  - Diğer ilgili kararlar [doğrulanmalı]
+**ZORUNLU KURAL:** Yalnızca konu başlığı + asıl çerçeve kararını ver. Spesifik para cezası kararı numaralarını uydurma.
 
-⚠️ Karar atıflarını https://www.kvkk.gov.tr 'den doğrula.
+```
+📚 Asıl çerçeve:
+  - KVKK Kurulu'nun 24.01.2019 tarih ve 2019/10 sayılı kararı
+    (72 saat bildirim ilkesi — yapısal karar, doğrulanmıştır)
+
+📚 İhlal bildirim cezası verilmiş diğer vakalar mevcuttur ancak:
+  - Spesifik numaraları uydurmuyorum.
+  - kvkk.gov.tr → Karar Özetleri'nde "veri ihlali bildirim" araması yap;
+    ilgili kararı bana yapıştır, /kvkk-uyum-tr:karar-analizi ile detaylı analiz yaparım.
+
+⚠️ 2019/10 dışındaki tüm numaralar doğrulanmalıdır.
 ```
 
-Kullanıcı bir karar URL veya metni paylaşırsa `/kvkk-uyum-tr:karar-analizi` skill'ini öner.
+Bu disiplin sert prompt-level kuraldır. Detay: `references/karar-atif-kurallari.md`
 
 ## Çıktı
 
@@ -164,9 +171,10 @@ Kullanıcı bir karar URL veya metni paylaşırsa `/kvkk-uyum-tr:karar-analizi` 
 
 📄 İlgili Kişi Bildirim Taslağı: [yukarıdaki]
 
-📚 İlgili Kurul kararları [doğrulanmalı]:
-  - 2019/10 — 72 saat ilkesi
-  - [diğerleri — kvkk.gov.tr'den doğrula]
+📚 Çerçeve karar:
+  - Kurul'un 24.01.2019 tarih ve 2019/10 sayılı kararı — 72 saat ilkesi
+📚 Diğer ilgili kararlar (numarasız — kullanıcı kvkk.gov.tr'den doğrulayacak):
+  - [Sadece konu başlığı yaz, numara verme]
 
 🎯 Sıradaki Adımlar:
   1. KVKK bildirim taslağını avukat onayına götür (en geç 24 saat)
