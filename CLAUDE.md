@@ -45,11 +45,36 @@ claude-for-tr-legal/                     ← repo kök
     skills/
       cold-start-interview/SKILL.md
       <skill-adı>/SKILL.md
+    references/                           ← plugin runtime için statik veri (paketleme sırasında plugin'le birlikte yüklenir)
+      firma-profili-template.md           ← (repo kökündeki ile senkron tutulur)
     hooks/                                ← (opsiyonel) lifecycle hooks
     agents/                               ← (opsiyonel) sub-agent tanımları
 ```
 
-**Önemli karar:** `references/` klasörü **yalnızca repo kökünde** yaşar; plugin klasörlerinin içine `references/` koymuyoruz. Bu, Anthropic'in resmi yapısıyla uyumludur. Plugin başına özel veri (örn. KVKK kararı şablonları) gerekirse `kvkk-uyum-tr/data/` veya plugin'e özel başka bir alt klasör kullanılabilir — ama bu paylaşılan referans **değildir**.
+**`references/` klasörü kararı (2026-05-31 turn-6'da revize):**
+
+Türk plugin'ler için **iki yerde** `references/` bulunur:
+
+1. **Repo kökünde `references/`** — geliştirici dokümantasyonu ve repo-wide paylaşılan referanslar:
+   - `tbb-meslek-kurallari-ozet.md` — TBB MK + Av.K. madde özetleri
+   - `karar-atif-kurallari.md` — halüsinasyon disiplini
+   - `baro-danisma-notu.md` — TBB reklam/tabela değerlendirmesi
+   - `veri-isleme-bildirimi.md` — Anthropic API iletim çerçevesi
+   - `firma-profili-template.md` — geliştirici görüntüsü için kopyası
+
+2. **Plugin içinde `<plugin>/references/`** — plugin runtime'ında gerekli olan statik veri:
+   - Şu an yalnızca `firma-profili-template.md` (cold-start template)
+   - Plugin başına gerektikçe başka template/şablonlar eklenir
+
+**Neden iki yerde?** `claude plugin install` paketleme sırasında **yalnızca plugin klasörünü** kopyalar; repo kökündeki `references/` plugin paketine dahil edilmez. Cold-start skill'inin runtime'da template'e erişebilmesi için plugin **içinde** bir kopya zorunludur. Aynı dosya geliştirici görüntüsü için kökte de bulunur.
+
+**Senkronizasyon:** İki dosyanın aynı içeriği koruması maintainer sorumluluğundadır. Şu an `firma-profili-template.md` her iki yerde de aynı; revizyon yapılırsa iki yer de güncellenir.
+
+**Plugin paketleme test sonucu (2026-05-31 turn-6):**
+- Plugin paketi yolu: `~/.claude/plugins/cache/claude-for-tr-legal/<plugin>/<version>/`
+- `${CLAUDE_PLUGIN_ROOT}` bu yola çözümlenir
+- `${CLAUDE_PLUGIN_ROOT}/../` plugin'in versiyon klasörünün üstüne çıkar (yalnızca o plugin'in alt dizini, repo'nun bütünü değil)
+- Dolayısıyla `${CLAUDE_PLUGIN_ROOT}/../references/` çalışmaz; **`${CLAUDE_PLUGIN_ROOT}/references/` çalışır.**
 
 **İsimlendirme:**
 - Plugin adları: küçük harf, tire ile ayrılmış, `-tr` soneki (örn. `kvkk-uyum-tr`)

@@ -46,9 +46,9 @@ Bu kullanıcı `claude-for-tr-legal`'ın **ilk plugin'ini** kuruyor. Önce büro
 
 #### Adım 0.1 — Şirket/Büro Soruları
 
-Template: `${CLAUDE_PLUGIN_ROOT}/../references/firma-profili-template.md` (repo kökünden okunur)
+Template: `${CLAUDE_PLUGIN_ROOT}/references/firma-profili-template.md` (plugin paketinin içinden okunur)
 
-> ⚠️ **Bilinen kurulum sorusu:** `${CLAUDE_PLUGIN_ROOT}` plugin'in kendi klasörünü gösterir; bir üst dizine (repo kökü `references/`) çıkma `../` ile mümkün olmalı ancak Anthropic'in plugin kurulum düzenine göre **her senaryoda çalışmayabilir**. Eğer plugin kurulduğunda bu path çözülmezse plugin, soruları template olmadan **inline** sorar (cevaplar değişmez, sadece şablona referans devre dışı kalır). Bu durum 2026-05-31 itibarıyla resmî olarak test edilmemiştir; ilk gerçek kurulumda doğrulanmalıdır.
+> ℹ️ **Path kararı:** Plugin paketleme sırasında repo kökündeki `references/` klasörü plugin paketine dahil edilmez (yalnızca plugin alt klasörü kopyalanır). Bu nedenle cold-start için gerekli template **plugin paketinin içine** (`kvkk-uyum-tr/references/`) kopyalanmıştır. Aynı dosya repo kökündeki `references/` altında da geliştirici görüntüsü için bulunur — iki yer senkronize tutulur. Bu karar 2026-05-31 turn-6 testinde gerçek `claude plugin install` davranışı doğrulandıktan sonra alınmıştır.
 
 Sırayla sor:
 
