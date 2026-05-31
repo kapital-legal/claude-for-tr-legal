@@ -1,6 +1,6 @@
 # Firma / Büro Profili
 
-> Bu dosya `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md` konumunda saklanır.
+> Bu dosya `~/.claude/claude-for-tr-legal/firma-profili.md` konumunda saklanır.
 > İlk kurulan plugin'in cold-start interview'unda doldurulur. Sonraki plugin'ler bu dosyayı okur ve büro bilgilerini tekrar sormaz.
 > İçeriği güncel tutmak için herhangi bir plugin'in `cold-start-interview --firma-guncelle` komutu ile yeniden çalıştırılabilir.
 

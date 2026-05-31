@@ -2,7 +2,7 @@
 name: cold-start-interview
 description: >
   kvkk-uyum-tr ilk kurulum interview'u. Önce paylaşılan firma profilini
-  (~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md) kontrol eder;
+  (~/.claude/claude-for-tr-legal/firma-profili.md) kontrol eder;
   yoksa kullanıcıdan büro bilgisini alır ve yazar; varsa onaylatır. Sonra
   plugin-spesifik KVKK profilini doldurur. "KVKK plugin'i kur", "onboard",
   "yeniden ayarla", "profili güncelle" söylemlerinde tetiklenir.
@@ -13,7 +13,7 @@ argument-hint: "[--redo: tüm interview'u yeniden çalıştır] [--firma-guncell
 
 > Bu skill iki ayrı dosyayı yönetir:
 >
-> 1. **Paylaşılan firma profili** — `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md`
+> 1. **Paylaşılan firma profili** — `~/.claude/claude-for-tr-legal/firma-profili.md`
 >    Tüm `claude-for-tr-legal` plugin'leri buradan okur. İlk kurulan plugin'in cold-start'ı bu dosyayı oluşturur; sonraki plugin'lerin cold-start'ı bu dosyayı okuyup onaylatır — büro bilgilerini tekrar sormaz.
 >
 > 2. **Plugin-spesifik KVKK profili** — `~/.claude/plugins/config/claude-for-tr-legal/kvkk-uyum-tr/CLAUDE.md`
@@ -24,7 +24,7 @@ argument-hint: "[--redo: tüm interview'u yeniden çalıştır] [--firma-guncell
 Plugin'in plugin-spesifik sorularına geçmeden önce, **mutlaka** önce paylaşılan firma profilini kontrol et:
 
 ```
-Dosya: ~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md
+Dosya: ~/.claude/claude-for-tr-legal/firma-profili.md
 ```
 
 ### Senaryo A: Firma profili VAR ve doluysa
@@ -61,9 +61,9 @@ Sırayla sor:
 
 #### Adım 0.2 — Firma Profilini Yaz
 
-Cevapları template'e doldurup `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md` konumuna yaz. Parent klasörleri oluştur. Kullanıcıya bildir:
+Cevapları template'e doldurup `~/.claude/claude-for-tr-legal/firma-profili.md` konumuna yaz. Parent klasörleri oluştur. Kullanıcıya bildir:
 
-> ✓ Firma profilini kaydettim: `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md`
+> ✓ Firma profilini kaydettim: `~/.claude/claude-for-tr-legal/firma-profili.md`
 >
 > Sonraki `claude-for-tr-legal` plugin'lerini (örn. fikri-mulkiyet-tr, sirketler-hukuku-tr) kurduğunda **bu sorular tekrar sorulmayacak.** Bu dosya tüm plugin'lerin ortak referansıdır.
 
@@ -133,7 +133,7 @@ Kullanıcı kendisi bir araç eklediyse availability sun. **Skill bu araçları 
 ✓ KVKK profilin kaydedildi.
 
 📁 Dosyalar:
-  - ~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md (paylaşılan)
+  - ~/.claude/claude-for-tr-legal/firma-profili.md (paylaşılan)
   - ~/.claude/plugins/config/claude-for-tr-legal/kvkk-uyum-tr/CLAUDE.md (KVKK)
 
 ✓ Mevcut araçlar: WebFetch ✓ [+ varsa diğerleri]

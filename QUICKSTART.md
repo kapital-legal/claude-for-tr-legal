@@ -37,12 +37,18 @@ Bu adım zorunlu — plugin yeniden başlatma olmadan görünmez.
 /kvkk-uyum-tr:cold-start-interview
 ```
 
-5-15 dakika sürer. Sana:
-- Hangi rolde olduğun (büro avukatı, in-house, KVK uzmanı)
-- Veri sorumlusu mu veri işleyen mi (genelde her ikisi de)
-- Sektör, müvekkil tipi, ölçek
-- VERBİS durumu, mevcut aydınlatma metni, varsa örnek risk değerlendirmesi
-soruları sorulur. Cevaplar `~/.claude/plugins/config/claude-for-tr-legal/kvkk-uyum-tr/CLAUDE.md` dosyasına yazılır — bu **senin pratik profilin** olur ve sonraki tüm skill'ler buradan okur.
+5-15 dakika sürer. Cold-start **iki dosya** yönetir:
+
+**A) Paylaşılan firma profili** — `~/.claude/claude-for-tr-legal/firma-profili.md`
+- İlk kez `claude-for-tr-legal`'dan bir plugin kuruyorsan: büro adı, yargı çevresi, sektör, ölçek, bağlı baro vb. sorular sorulur ve bu dosyaya yazılır.
+- Bu dosya **tüm `claude-for-tr-legal` plugin'lerinin** ortak referansıdır. Yarın `fikri-mulkiyet-tr` veya `sirketler-hukuku-tr` plugin'ini kurduğunda **bu sorular tekrar sorulmayacak** — cold-start önce bu dosyayı okuyup özet gösterecek, sen onaylayınca plugin-spesifik sorulara geçecek.
+- Yalnızca bu profili güncellemek için: `/kvkk-uyum-tr:cold-start-interview --firma-guncelle`
+
+**B) Plugin-spesifik KVKK profili** — `~/.claude/plugins/config/claude-for-tr-legal/kvkk-uyum-tr/CLAUDE.md`
+- KVKK pratiğine özel sorular: rolün (avukat / KVK uzmanı / DPO), veri sorumlusu mu veri işleyen mi, VERBİS durumu, mevcut aydınlatma metni, varsa risk değerlendirmesi.
+- Bu dosya yalnızca bu plugin'in skill'leri tarafından okunur. Diğer plugin'lerin kendi profili olur.
+
+Detaylar için README'deki "Paylaşılan Firma Profili" bölümüne bakın.
 
 ### 5. İlk skill'ini çalıştır
 

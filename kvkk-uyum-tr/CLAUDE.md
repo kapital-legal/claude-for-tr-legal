@@ -13,7 +13,7 @@
 
 ## 1. Büro / Şirket Profili
 
-Şirket bilgileri **paylaşılan firma profilinde** saklanır: `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md`. Bu dosya tüm `claude-for-tr-legal` plugin'lerinin ortak referansıdır; cold-start-interview tarafından oluşturulur ve okunur.
+Şirket bilgileri **paylaşılan firma profilinde** saklanır: `~/.claude/claude-for-tr-legal/firma-profili.md`. Bu dosya tüm `claude-for-tr-legal` plugin'lerinin ortak referansıdır; cold-start-interview tarafından oluşturulur ve okunur.
 
 Bu dosya, sadece KVKK pratiğine özel detayları içerir.
 

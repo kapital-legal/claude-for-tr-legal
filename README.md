@@ -99,12 +99,14 @@ Bu repo **kendi başına resmi karar veritabanı entegrasyonu içermez**. Plugin
 
 `claude-for-tr-legal` repo'su şu paylaşım mekanizmasını kullanır:
 
-- **Paylaşılan profil dosyası:** `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md`
+- **Paylaşılan profil dosyası:** `~/.claude/claude-for-tr-legal/firma-profili.md`
 - İlk kurulan plugin'in cold-start interview'u bu dosyayı oluşturur (büro adı, yargı çevresi, sektör, bağlı baro vb.).
 - Sonraki plugin'lerin cold-start interview'u **önce bu dosyayı kontrol eder**; varsa kullanıcıya özet gösterip onaylatır ve büro sorularını tekrar sormaz.
 - Sadece plugin-spesifik sorular (örn. KVKK için VERBİS durumu, marka plugin'i için TÜRKPATENT sicil no) plugin başına ayrı dosyada saklanır.
 
 > 💡 Çok partner'lı bürolarda (örn. Sinem KVKK plugin'i kurar, Muhittin sonra marka plugin'i kurar) bu mekanizma sayesinde her partner aynı büro bilgisini yeniden girmek zorunda kalmaz.
+
+**Konum kararı:** Firma profili Anthropic'in plugin yönetim dizinleri (`~/.claude/plugins/`) **dışında** tutulur — bu sayede Claude Code'un `/plugin update` veya `/plugin uninstall` işlemlerinden etkilenmez. Veri yalnızca kullanıcının açıkça çağırdığı `--firma-guncelle` veya `--redo` ile değiştirilir.
 
 Firma profilini güncellemek için:
 ```
@@ -136,9 +138,11 @@ Bu repo bir hukuk bürosu sponsorluğunda yayımlanmıştır. TBB Meslek Kuralla
 - Sponsor olan Kapital Legal'in tanıtım amacıyla kurulmadığı, ortak meslek altyapısına katkı amacıyla yayımlandığı açıkça belirtilmiştir.
 - Yine de **launch öncesi ve sonrasında bağlı baronuza danışılması önerilir.** Reklam/tabela kuralları zaman içinde yorumlanmakta ve revize edilmektedir.
 
-## Anthropic ile İlişki
+## Anthropic ile İlişki — Türev Eser Bildirimi
 
-Bu repo **Anthropic'in resmi ürünü değildir.** Topluluk projesidir; Apache 2.0 lisansı altında Anthropic'in [claude-for-legal](https://github.com/anthropics/claude-for-legal) yapısından esinlenmiştir.
+Bu repo **Anthropic'in resmi ürünü değildir.** [anthropics/claude-for-legal](https://github.com/anthropics/claude-for-legal) projesinin Apache 2.0 lisansı altında **türev bir eseridir** (derivative work). Repository yapısı, plugin manifest formatı, skill organizasyon deseni, cold-start interview deseni ve disclaimer disiplini Anthropic'in çalışmasından uyarlanmıştır; içerik, terminoloji ve hukuki çerçeve Türk hukuku için yeniden yazılmıştır.
+
+Apache 2.0 madde 4 atıf yükümlülüğü kapsamında detaylı bildirim ve modifikasyon listesi için repo kökündeki [`NOTICE`](NOTICE) dosyasına bakınız. Türev dosyalar (örn. `kvkk-uyum-tr/CLAUDE.md` template'i, `CLAUDE.md` geliştirici dokümanı) içinde HTML yorum bloğu ile yapı kaynağı açıkça gösterilmiştir.
 
 Plugin'ler olgunlaştığında Anthropic'in `external_plugins/` klasörüne PR olarak sunulması hedeflenir.
 

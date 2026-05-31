@@ -14,7 +14,7 @@ Bu dosya, repo üzerinde çalışan geliştiriciler (insan veya AI) için yönle
 
 4. **Paylaşılan firma profili — kendi mekanizmamız.** Bu repo, Anthropic'in plugin başına ayrı CLAUDE.md tutmasının üstüne **kendi paylaşım mekanizmasını** kurar:
 
-   - **Paylaşılan profil:** `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md` (kök seviye, plugin-bağımsız)
+   - **Paylaşılan profil:** `~/.claude/claude-for-tr-legal/firma-profili.md` (kök seviye, plugin-bağımsız)
    - **Plugin-spesifik profil:** `~/.claude/plugins/config/claude-for-tr-legal/<plugin>/CLAUDE.md` (her plugin için ayrı)
    - **Akış:** İlk kurulan plugin'in `cold-start-interview` skill'i önce firma profilini kontrol eder. Yoksa kullanıcıdan büro bilgilerini toplar ve **paylaşılan dosyaya** yazar. Sonra plugin-spesifik soruları sorar ve **plugin-spesifik dosyaya** yazar. Sonraki plugin'lerin `cold-start-interview`'u paylaşılan dosyayı okur, kullanıcıya özet gösterip onaylatır ve şirket sorularını **tekrar sormaz** — yalnızca plugin-spesifik sorulara odaklanır.
    - **Implementation referansı:** `kvkk-uyum-tr/skills/cold-start-interview/SKILL.md` (Adım 0 ve Adım 1)
