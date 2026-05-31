@@ -1,0 +1,8 @@
+{
+  "name": "kvkk-uyum-tr",
+  "version": "0.1.0",
+  "description": "KVKK m.10 aydınlatma metni üretir, ilgili kişi başvurularını (DSAR) 30 günlük yasal süre içinde yanıtlar, VERBİS uyumunu kontrol eder, veri ihlali triajı yapar (72 saatlik KVKK bildirim zarfı), DPIA üretir ve yargi-mcp üzerinden canlı KVKK Kurulu kararlarını çeker.",
+  "author": {
+    "name": "Kapital Legal"
+  }
+}

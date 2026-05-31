@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-for-tr-legal",
+  "description": "Türk hukukuna uyarlanmış Claude Code plugin koleksiyonu — KVKK, fikri mülkiyet (SMK), şirketler hukuku (TTK), iş hukuku, dava yönetimi (UYAP) ve diğer pratik alanlar için referans skill'ler, ajanlar ve veri bağlayıcıları. Anthropic'in claude-for-legal projesinin Türkiye versiyonu.",
+  "owner": {
+    "name": "Kapital Legal",
+    "url": "https://www.kapitallegal.com"
+  },
+  "plugins": [
+    {
+      "name": "kvkk-uyum-tr",
+      "displayName": "KVKK Uyum (TR)",
+      "source": "./kvkk-uyum-tr",
+      "description": "KVKK m.10 aydınlatma metni üretir, ilgili kişi başvurularını (DSAR) 30 günlük yasal süre içinde yanıtlar, VERBİS uyumunu kontrol eder, veri ihlali triajı yapar (72 saatlik KVKK bildirim), DPIA üretir ve yargi-mcp üzerinden canlı KVKK Kurulu kararlarını çeker.",
+      "author": {
+        "name": "Kapital Legal"
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local plugin testing / cached configs
+*.local
+
+# Logs
+*.log
+logs/
+
+# Sensitive (no test data with real PII)
+fixtures/real-cases/
+*.muvekkil
+*.private
