@@ -27,7 +27,7 @@ Bu repo aşağıdaki tasarım kararlarıyla bu riski **azaltmaya** çalışmış
 
 ### B) LinkedIn'de duyurmak reklam mı?
 - **Argüman var:** Sponsor olarak repo'yu duyurmak Kapital Legal'in görünürlüğünü artırır.
-- **Argüman yok:** Avukatın bilimsel/mesleki içerik üretmesi reklam yasağına girmez (TBB MK m.55-61).
+- **Argüman yok:** Avukatın bilimsel/mesleki içerik üretmesi reklam yasağına genellikle girmez. (Birincil kaynak: TBB Reklam Yasağı Yönetmeliği; TBB Meslek Kuralları m.7/8/12 [doğrulanmalı] paralel düzenleme — kullanmadan önce baroya/güncel Yönetmeliğe danışın.)
 - **Tavsiye:** Duyuru postunda "hizmet alın" tarzı CTA olmasın. Sadece "katkı ekosistemi" çerçevesinde sun.
 
 ### C) Diğer baroların reklam kuralları
@@ -45,7 +45,7 @@ Bağlı baronuza şu spesifik soruları sormanız önerilir:
 
 1. **"Sponsorluğunda kamuya açık bir yazılım yayımlamak reklam kapsamına girer mi?"**
 2. **"Bu yazılımı LinkedIn'de duyurmak meslek kurallarına aykırı mı?"**
-3. **"Müvekkil verisi içermeyen, anonim örneklerle kurulan bir araç, müvekkil sırrı kuralı (TBB MK m.36) açısından sakıncalı mı?"**
+3. **"Müvekkil verisi içermeyen, anonim örneklerle kurulan bir araç, müvekkil sırrı kuralı (TBB Meslek Kuralları m.37 + 1136 sayılı Avukatlık Kanunu m.36) açısından sakıncalı mı?"**
 4. **"TBB Meslek Kuralları çerçevesinde 'hukuki tavsiye değildir' disclaimer'ı yeterli mi?"**
 5. **"Açık kaynak topluluk katkılarını kabul etmek (PR'lar, anonim katkılar) hangi yükümlülükleri doğurur?"**
 

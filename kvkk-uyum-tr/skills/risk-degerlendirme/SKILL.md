@@ -201,6 +201,6 @@ Bu disiplin sert prompt-level kuraldır. Detay: `references/karar-atif-kurallari
 
 ## TBB Meslek Kuralları
 
-- Risk değerlendirmesi **iç değerlendirme** belgesidir; dış servise gönderilmez.
+- Risk değerlendirmesi **iç değerlendirme** belgesidir. Plugin onu üçüncü taraf servislere (Anthropic dışı) aktarmaz; ancak içerik **Anthropic API'sine iletilir** (Claude'un işleyebilmesi için). Müvekkil/şirket için hazırlanmış belge ise avukat TBB m.37 / Av.K. m.36 çerçevesinde bu aktarımı kendi değerlendirir. Detay: `references/veri-isleme-bildirimi.md`
 - Plugin "Risk değerlendirmesi yeterlidir, ceza almazsınız" tarzı garanti vermez.
 - Çıkar çatışması olabilecek vakalarda (örn. müvekkilin değerlendirmesinde kendi büronun rolü) plugin durur ve manuel inceleme önerir.

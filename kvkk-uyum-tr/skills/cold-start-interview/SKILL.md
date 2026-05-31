@@ -6,7 +6,7 @@ description: >
   yoksa kullanıcıdan büro bilgisini alır ve yazar; varsa onaylatır. Sonra
   plugin-spesifik KVKK profilini doldurur. "KVKK plugin'i kur", "onboard",
   "yeniden ayarla", "profili güncelle" söylemlerinde tetiklenir.
-argument-hint: "[--redo: tüm interview'u yeniden çalıştır] [--firma-guncelle: yalnızca paylaşılan firma profilini güncelle]"
+argument-hint: "[--redo: tüm interview'u yeniden çalıştır] [--firma-guncelle: yalnızca paylaşılan firma profilini güncelle] [--check-integrations: yalnızca Adım 2 araç kontrolünü yeniden çalıştır]"
 ---
 
 # /kvkk-uyum-tr:cold-start-interview
@@ -47,6 +47,8 @@ Bu kullanıcı `claude-for-tr-legal`'ın **ilk plugin'ini** kuruyor. Önce büro
 #### Adım 0.1 — Şirket/Büro Soruları
 
 Template: `${CLAUDE_PLUGIN_ROOT}/../references/firma-profili-template.md` (repo kökünden okunur)
+
+> ⚠️ **Bilinen kurulum sorusu:** `${CLAUDE_PLUGIN_ROOT}` plugin'in kendi klasörünü gösterir; bir üst dizine (repo kökü `references/`) çıkma `../` ile mümkün olmalı ancak Anthropic'in plugin kurulum düzenine göre **her senaryoda çalışmayabilir**. Eğer plugin kurulduğunda bu path çözülmezse plugin, soruları template olmadan **inline** sorar (cevaplar değişmez, sadece şablona referans devre dışı kalır). Bu durum 2026-05-31 itibarıyla resmî olarak test edilmemiştir; ilk gerçek kurulumda doğrulanmalıdır.
 
 Sırayla sor:
 
@@ -150,6 +152,7 @@ Kullanıcı kendisi bir araç eklediyse availability sun. **Skill bu araçları 
 | (yok) | Standart interview. Mevcut profili tespit eder, atlanması gerekenleri atlar. |
 | `--redo` | Plugin-spesifik KVKK profilini sıfırdan doldurur. Paylaşılan firma profili dokunmaz. |
 | `--firma-guncelle` | Yalnızca paylaşılan firma profilini yeniden doldurur. KVKK profili dokunmaz. |
+| `--check-integrations` | Yalnızca Adım 2'deki mevcut araç kontrolünü yeniden çalıştırır; profil sorularını sormaz. Yeni bir araç (örn. Google Drive bağlayıcı, opsiyonel KVKK arama aracı) kurduktan sonra plugin'in bunu tanımasını sağlar. |
 
 ## Hata Durumları
 
@@ -162,4 +165,4 @@ Kullanıcı kendisi bir araç eklediyse availability sun. **Skill bu araçları 
 Bu interview'da:
 - Müvekkil ismi/dosya numarası sormaz.
 - Hassas finansal bilgi sormaz.
-- Yazılan dosyalar **yalnızca yerel makinede** saklanır; dış servise gönderilmez.
+- Profil dosyaları (firma + plugin-spesifik) yerel diskte saklanır. Cevaplar, Claude'un işleyebilmesi için **Anthropic API'sine iletilir** (üçüncü taraf servislere değil). Avukat, TBB m.37 / Av.K. m.36 çerçevesinde bu aktarımı kendi değerlendirir. Detay: `references/veri-isleme-bildirimi.md`

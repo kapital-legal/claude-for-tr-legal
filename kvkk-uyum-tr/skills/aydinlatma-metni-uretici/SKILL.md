@@ -34,7 +34,7 @@ Kullanıcıdan veya profilden:
   - Özel nitelikli için m.6
 - **Aktarım taraflar:** Hangi 3. taraflara, hangi amaçla (yurtiçi/yurtdışı)
 - **Saklama süresi:** Kategori bazında
-- **İlgili kişi hakları:** KVKK m.11'deki 7 hak
+- **İlgili kişi hakları:** KVKK m.11'de sayılan haklar (a–ğ bentleri; 9 hak — zararın giderilmesi/tazminat talebi dahil)
 
 ### 2. Şablon seç
 
@@ -58,7 +58,7 @@ Her aydınlatma metni şunları içermelidir (eksiklik = KVKK ihlali):
 - [ ] Aktarım yapılan taraflar + aktarım amacı
 - [ ] (Yurtdışı aktarım varsa) m.9 dayanağı
 - [ ] Saklama süreleri
-- [ ] KVKK m.11 hakları (7 hak)
+- [ ] KVKK m.11'de sayılan tüm haklar (a–ğ bentleri eksiksiz)
 - [ ] Başvuru kanalı (e-posta, KEP, posta adresi)
 
 ### 4. Risk işaretleri
@@ -67,7 +67,7 @@ Her aydınlatma metni şunları içermelidir (eksiklik = KVKK ihlali):
 
 - **Açık rıza tek dayanak olarak kullanılıyorsa** → uyar; açık rıza yetersiz olabilir (geri çekilebilir, koşula bağlanamaz)
 - **Özel nitelikli veri işleniyor ama m.6 dayanağı net değil** → uyar
-- **Sınır ötesi aktarım var ama m.9 dayanağı belirsiz** → KVKK'nın güvenli ülkeler listesi düzenlemesine dikkat
+- **Sınır ötesi aktarım var ama m.9 dayanağı belirsiz** → KVKK m.9'un 12 Mart 2024 kanun değişikliği sonrası üç aşamalı rejimine göre değerlendir: (i) yeterlilik kararı, (ii) uygun güvenceler (Kurul'un 04.06.2024 tarih ve 2024/959 sayılı kararıyla kabul edilen standart sözleşme metinleri / bağlayıcı şirket kuralları / taahhütname), (iii) arızi haller. Açık rıza 1 Eylül 2024 itibarıyla yalnızca arızi aktarımda dayanak olabilir.
 - **Saklama süresi belirtilmemiş** → "ihtiyaç süresi" gibi belirsiz ifadeler yerine somut süre öner
 
 ### 5. Çıktı
@@ -94,7 +94,9 @@ Her aydınlatma metni şunları içermelidir (eksiklik = KVKK ihlali):
 [Tablo: veri kategorisi → süre → mevzuat dayanağı]
 
 ## 6. İlgili Kişi Hakları (KVKK m.11)
-[7 hakkı tek tek say]
+[m.11'de sayılan tüm haklar — a, b, c, ç, d, e, f, g, ğ bentleri — tek tek listele.
+ğ bendinin "zararın giderilmesini talep etme" hakkı dahil edilmelidir; tazminat
+m.11 dışı değildir.]
 
 ## 7. Başvuru
 ...

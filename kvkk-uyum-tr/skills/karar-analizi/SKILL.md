@@ -45,7 +45,7 @@ Kullanıcı üç şekilde karar sağlayabilir:
 **Yöntem A — URL:**
 ```
 /kvkk-uyum-tr:karar-analizi
-> Karar URL: https://www.kvkk.gov.tr/Icerik/7593/2023-86
+> Karar URL: https://www.kvkk.gov.tr/Icerik/<XXXX>/<YYYY-NN>  (örnek format — gerçek karar URL'iyle değiştir)
 ```
 Plugin `WebFetch` ile sayfa içeriğini çeker, karar metnini çıkartır.
 
@@ -57,7 +57,7 @@ Plugin `WebFetch` ile sayfa içeriğini çeker, karar metnini çıkartır.
 
 **Yöntem C — Dosya yolu:**
 ```
-/kvkk-uyum-tr:karar-analizi --file ~/Downloads/karar-2023-86.pdf
+/kvkk-uyum-tr:karar-analizi --file ~/Downloads/<karar-dosyasi>.pdf
 ```
 Plugin dosyayı `Read` ile okur (PDF/MD/TXT).
 

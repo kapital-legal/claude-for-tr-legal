@@ -8,7 +8,7 @@
 
 - **Pratik ortamı:** [Bağımsız avukat / Hukuk bürosu / Şirket içi (in-house) / Kamu / Üniversite kliniği]
 - **Büro/Şirket adı:** [PLACEHOLDER]
-- **Sektör:** [PLACEHOLDER] (örn. teknoloji hukuku, IP, ticaret, ailem hukuku, ceza, idare)
+- **Sektör:** [PLACEHOLDER] (örn. teknoloji hukuku, IP, ticaret, aile hukuku, ceza, idare)
 - **Ana hizmet:** [PLACEHOLDER] (1-2 cümlede ne yaptığınız)
 - **Ölçek:** [Solo / 2-5 avukat / 6-20 / 21-50 / 50+]
 - **Konum:** [İl/ilçe — birden fazla ofis varsa hepsi]
@@ -17,7 +17,7 @@
 
 - **Birincil yargı çevresi:** [PLACEHOLDER] (örn. İzmir, İstanbul, Ankara)
 - **Faaliyet gösterilen iller:** [PLACEHOLDER]
-- **Uluslararası iş:** [Var / Yok] — varsa hangi ülkeler/dilller
+- **Uluslararası iş:** [Var / Yok] — varsa hangi ülkeler/diller
 
 ## Düzenleyici Otoriteler
 
@@ -40,7 +40,7 @@ Hangi otoritelerin kararları/düzenlemeleri sizi etkiler? (Plugin'ler buna gör
 
 - **Risk profili:** [Konservatif / Dengeli / Atak]
 - **"Hayır" diyebileceğin durumlar:** [PLACEHOLDER]
-- **Eskaleİasyon eşiği:** Hangi durumda partner/üst avukat onayı gerekir? [PLACEHOLDER]
+- **Eskalasyon eşiği:** Hangi durumda partner/üst avukat onayı gerekir? [PLACEHOLDER]
 
 ## Eskalasyon Zinciri
 
@@ -74,7 +74,7 @@ Hangi otoritelerin kararları/düzenlemeleri sizi etkiler? (Plugin'ler buna gör
 
 - **Üye olunan baro:** [PLACEHOLDER]
 - **Levha numarası (opsiyonel):** [PLACEHOLDER]
-- **TBB meslekta uyum kontrolü:** [Aktif / Pasif] — Aktif ise her çıktı TBB Meslek Kuralları gözetilerek üretilir
+- **TBB Meslek Kuralları uyum kontrolü:** [Aktif / Pasif] — Aktif ise her çıktı TBB Meslek Kuralları + Avukatlık Kanunu gözetilerek üretilir
 
 ---
 

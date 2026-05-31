@@ -97,11 +97,11 @@ Profil son güncelleme tarihinden 6 aydan fazla geçtiyse → 🟡 uyar.
   ⚠️  3 kayıt eksik:
     - Satır 7 (müşteri iletişim) — saklama süresi yok
     - Satır 14 (web ziyaretçi) — çerez detayı yok
-    - Satır 19 (yurt dışı aktarım — ABD) — m.9 dayanağı belirsiz
+    - Satır 19 (yurt dışı aktarım — ABD) — KVKK m.9 dayanağı belirsiz: yeterlilik kararı yok, uygun güvence (standart sözleşme/BCR/taahhütname) ya da arızi haller dayanağı mı?
 
 ⏰ Güncelleme Tetikleyicileri:
   ⚠️  Son güncellemeden 8 ay geçti — gözden geçirme önerilir
-  ⚠️  KVKK Mart 2026 ABD güvenli ülkeler kararına göre satır 19'u revize et
+  ⚠️  Yurt dışı aktarım satırını KVKK m.9 yeni rejimine göre (12 Mart 2024 kanun değişikliği + Kurul'un 04.06.2024 tarih ve 2024/959 sayılı standart sözleşme kararı) revize et — uygun güvence veya arızi hal dayanağı kullan, açık rıza yalnızca arızi aktarımda
 
 📚 Konuyla ilgili kararlar [doğrulanmalı]:
   - VERBİS eksik envanter idari para cezası kararları
@@ -109,7 +109,7 @@ Profil son güncelleme tarihinden 6 aydan fazla geçtiyse → 🟡 uyar.
 
 💡 Önerilen Aksiyon Listesi:
   1. Eksik 3 satırı tamamla
-  2. Yurt dışı aktarım için açık rıza ya da m.9 standart sözleşme imzala
+  2. Yurt dışı aktarım için KVKK m.9 yeni rejimine uygun dayanak kur: yeterlilik kararı kapsamı yoksa standart sözleşme (Kurul 2024/959) / BCR / taahhütname; açık rıza yalnızca arızi durumlarda
   3. VERBİS güncellemesi yap
   4. 2026 sonbahar gözden geçirmesi için takvime ekle
 
@@ -120,5 +120,5 @@ Profil son güncelleme tarihinden 6 aydan fazla geçtiyse → 🟡 uyar.
 ## TBB Meslek Kuralları
 
 - Müvekkil/şirketin veri envanteri bilgisi hassastır — sadece kullanıcının açıkça paylaştığı içerikle çalışır.
-- Plugin envanter dosyasını **dış servise göndermez**; sadece lokal işlem yapar.
+- Plugin, envanter dosyasını üçüncü taraf servislere (Anthropic dışı) **aktarmaz**; ancak Claude'un içeriği analiz edebilmesi için dosya içeriği **Anthropic API'sine iletilir**. Müvekkil PII içeren envanteri kullanmadan önce avukat TBB m.37 / Av.K. m.36 çerçevesinde bu aktarımı kendi değerlendirir. Anonim veriyle çalışılması önerilir. Detay: `references/veri-isleme-bildirimi.md`
 - VERBİS resmi sistem; **yanlış bildirim ihtimali** durumunda kullanıcıyı KVKK'ya başvurmaya yönlendirir.

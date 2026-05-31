@@ -190,5 +190,5 @@ Bu disiplin sert prompt-level kuraldır. Detay: `references/karar-atif-kurallari
 ## TBB Meslek Kuralları
 
 - Olay raporundaki PII anonimize edilir.
-- Etkilenen kişi listesi **dış servise gönderilmez**; sadece lokal işlenir.
+- Etkilenen kişi listesi üçüncü taraf servislere (Anthropic dışı) **aktarılmaz**; ancak Claude'un triaj yapabilmesi için içerik **Anthropic API'sine iletilir**. Veri ihlali bağlamında özellikle hassas — avukat, müvekkil sırrı (TBB m.37 / Av.K. m.36) çerçevesinde bu aktarımı kendi değerlendirir; **anonimleştirilmiş özet kullanılması** kesinlikle önerilir (gerçek ad/T.C./e-posta yerine "Müşteri 1", "Müşteri 2" gibi). Detay: `references/veri-isleme-bildirimi.md`
 - Plugin "ceza almazsınız" tarzı vaatte bulunmaz; risk değerlendirmesi sunar.

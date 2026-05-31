@@ -44,7 +44,7 @@ Politikadaki ana konuları çıkar:
 ### 2. Karşılaştırılacak kararları al
 
 Kullanıcı şu üç yoldan biriyle sağlar:
-- **URL listesi:** `https://www.kvkk.gov.tr/Icerik/7593/2023-86, https://...`
+- **URL listesi:** `https://www.kvkk.gov.tr/Icerik/<XXXX>/<YYYY-NN>, https://...` (örnek format — kullanıcının kvkk.gov.tr'den getirdiği gerçek URL'lerle değiştir)
   Plugin `WebFetch` ile her birini çeker.
 - **Yapıştırılmış metinler:** Kullanıcı 3-5 karar metnini bir bütün olarak yapıştırır.
 - **Dosya yolu:** Kullanıcı kararları topladığı bir Markdown/PDF dosyası verir.
@@ -142,6 +142,6 @@ Risk × kullanım sıklığı matrisi:
 
 ## TBB Meslek Kuralları
 
-- Politika dosyaları **şirket içi gizli**dir; dış servise gönderilmez.
+- Politika dosyaları şirket içi gizli niteliktedir. Plugin onları üçüncü taraf servislere (Anthropic dışı) **aktarmaz**; ancak içerik **Anthropic API'sine iletilir** (Claude'un karşılaştırma yapabilmesi için). Avukat, TBB m.37 / Av.K. m.36 çerçevesinde bu aktarımı kendi değerlendirir; şirket politikasında "AI işleme" izni yoksa kullanılmadan önce iç onay alınmalıdır. Detay: `references/veri-isleme-bildirimi.md`
 - Plugin politikanın "uyumlu hale getirildikten sonra KVKK kontrolünden geçeceğini" iddia etmez.
 - Müvekkil/şirket avukatı için ürettiği analizdir; üçüncü taraf görüşü değildir.

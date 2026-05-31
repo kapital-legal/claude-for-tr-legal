@@ -33,31 +33,46 @@ Süreyi başlığa yaz, kalan gün sayısını söyle.
 
 ### 3. Talep kategorisi sınıflandırması
 
-KVKK m.11 hakları üzerinden işaretle (birden fazla olabilir):
+KVKK m.11'de sayılan haklar üzerinden işaretle (a–ğ bentleri; birden fazla olabilir):
 
-| Hak | Açıklama | Reddedilebilir mi? |
-|---|---|---|
-| (a) İşlenip işlenmediği | "Verim işleniyor mu?" | Hayır — bilgi verme zorunlu |
-| (b) İşlenmişse bilgi | "Hangi veriler, niye?" | Sınırlı (m.28 istisnaları) |
-| (c) İşleme amacı uyumu | "Amacına uygun mu işleniyor?" | Hayır |
-| (ç) Aktarım tarafları | "Kime aktarıldı?" | Sınırlı |
-| (d) Eksik/yanlış düzeltme | Düzeltme talebi | Hayır — yerine getirilmeli |
-| (e) Silme/yok etme | "Verimi sil" | Bazı durumlarda (m.7) |
-| (f) Aktarım iptali | Üçüncü tarafa bildirim | Bazı durumlarda |
-| (g) İtiraz (otomatik karar) | "Otomatik karar tarafıma aleyhe" | Sınırlı |
-| Tazminat | (m.11 dışı) Tazminat talebi | Yargılama gerektirir |
+| Bent | Hak | Açıklama | Reddedilebilir mi? |
+|---|---|---|---|
+| (a) | İşlenip işlenmediği | "Verim işleniyor mu?" | Hayır — bilgi verme zorunlu |
+| (b) | İşlenmişse bilgi | "Hangi veriler, niye?" | Sınırlı (m.28 istisnaları çerçevesinde) |
+| (c) | İşleme amacı ve uyumlu kullanım | "Amacına uygun mu işleniyor?" | Hayır |
+| (ç) | Aktarılan üçüncü kişiler (yurt içi/dışı) | "Kime aktarıldı?" | Sınırlı (m.28) |
+| (d) | Düzeltme | "Eksik/yanlış veriyi düzelt" | Hayır — yerine getirilmeli |
+| (e) | Silme / yok etme | "Verimi sil" | Bazı durumlarda (m.7 şartlarına göre) |
+| (f) | (d) ve (e) işlemlerinin aktarılan üçüncü kişilere bildirilmesi | "Düzeltme/silmeyi aktarılan taraflara da ilet" | Bazı durumlarda |
+| (g) | Otomatik analize itiraz | "Sırf otomatik analiz aleyhe sonuç doğurmasın" | Sınırlı |
+| (ğ) | Zararın giderilmesini talep (tazminat talebi) | "KVKK'ya aykırı işleme nedeniyle zarara uğradım, giderilmesini istiyorum" | Talep m.11 kapsamında başvuruya konu olur; tazminat **davası** ise KVKK m.14 saklı tuttuğu üzere genel mahkemede görülür |
 
-### 4. Reddi gerektirebilecek durumlar (KVKK m.28)
+> ⚠️ **Tazminat hakkının konumu:** Zararın giderilmesini talep etme hakkı KVKK m.11/1-(ğ)'dedir; veri sorumlusuna başvuruya konu olabilir. KVKK m.14, bu talebe karşılık tazminat **davasının** genel hükümlere göre açılma hakkını ayrıca saklı tutar. Plugin, "tazminat m.11 dışıdır" yanılgısını yapmaz.
 
-Şu durumlarda kanun talebi reddetmeyi gerektirebilir:
-- Diğer kişilerin haklarını ihlal eden talep
-- Şirket ticari sırrı ihlali
-- Devam eden hukuki süreç
-- Hukuki yükümlülük (saklama mecburiyeti)
-- Kamu güvenliği
-- Suç işlenmesinin önlenmesi/soruşturma
+### 4. Reddi gerektirebilecek/sınırlandıran durumlar (KVKK m.28)
 
-Tespit edilirse net dayanakla flag'le.
+KVKK m.28 iki ayrı fıkrayla işler. Plugin bu ikisini karıştırmaz:
+
+**m.28/1 — Kanunun tamamen kapsam dışı tuttuğu işlemeler (istisna):**
+- Madde 28/1 fıkrasında sayılan haller (örn. ulusal savunma, ulusal güvenlik, kamu güvenliği, soruşturma/kovuşturma kapsamındaki işleme vb.) Kanun'un kapsamı dışındadır.
+- Bu hallerde "başvuru reddi" değil, **Kanun'un uygulanmadığı** durum söz konusudur.
+- Plugin bu fıkraya ancak teknik gerekçeye işaret ederek atıf yapar; kullanıcıya "bu durumda m.28/1 kapsamı incelenmeli, başvuru yanıtının niteliği değişir" diyerek avukat müzakeresine yönlendirir.
+
+**m.28/2 — Kanunun kısmen uygulanmadığı haller (kısmi istisna):**
+- Madde 28/2 fıkrasında sayılan haller (örn. kişisel verilerin yetkili kişi/kuruluş tarafından yürütülen denetim faaliyetleri çerçevesinde işlenmesi, ticari sırrın korunması için gerekli olan işleme vb.).
+- Bu hallerde belirli yükümlülükler (örn. m.10 aydınlatma, VERBİS) uygulanmaz ama Kanun tamamen kapsam dışı kalmaz.
+
+**Pratik özet — başvuruya nasıl yansır:**
+| Durum | Olası gerekçe |
+|---|---|
+| Diğer kişilerin haklarını ihlal | m.28 değil; ölçülülük + diğer mevzuat dayanakları |
+| Şirket ticari sırrı | m.28/2 kapsamında kısmi istisna olabilir |
+| Devam eden hukuki süreç | m.28/1 (soruşturma/kovuşturma) veya genel hükümler |
+| Hukuki saklama yükümlülüğü | m.6/3 + ilgili sektörel mevzuat (örn. VUK) |
+| Kamu güvenliği | m.28/1 |
+| Suç önleme/soruşturma | m.28/1 |
+
+Tespit edilirse plugin **net dayanakla** (m.28/1 mi m.28/2 mi, hangi bent) flag'ler ve avukat müzakeresine yönlendirir; tek başına ret kararı önermez.
 
 ### 5. Yanıt taslağı üret
 

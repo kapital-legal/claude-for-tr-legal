@@ -1,6 +1,8 @@
-# Karar Atıf Kuralları — Halüsinasyon Önleme Disiplini
+# Karar & Mevzuat Atıf Kuralları — Halüsinasyon Önleme Disiplini
 
-> Bu dosya plugin geliştiricileri ve skill yazarları içindir. Her skill, KVKK Kurul kararı (veya başka mahkeme kararı) atfı verirken **bu kurallara sıkı sıkıya uymak zorundadır.** Bu, plugin'in en kritik güvenlik katmanıdır.
+> Bu dosya plugin geliştiricileri ve skill yazarları içindir. Her skill, **KVKK Kurul kararı, mahkeme kararı VEYA spesifik mevzuat madde numarası** atfı verirken **bu kurallara sıkı sıkıya uymak zorundadır.** Bu, plugin'in en kritik güvenlik katmanıdır.
+>
+> ⚠️ **2026-05-31 turn-5 update'i:** Bu disiplin **KVKK ve mahkeme kararı numaraları** kadar **TBB / Avukatlık Kanunu / Yönetmelik madde numaraları** için de geçerlidir. Yanlış madde numarası, yanlış karar numarası kadar zararlıdır — üstelik mevzuat numaraları skill çıktısında daha sabit/sık tekrarlanan unsurdur.
 
 ## Neden Bu Kural Var?
 
@@ -51,6 +53,27 @@ veya alıntısı üretirken:
 5. "En son", "geçen yıl", "yakın zamanda" gibi belirsiz zaman
    ifadelerinden kaçın. Model eğitim verisindeki son tarih bilinmez;
    "yakın zamanda" yorumu güvenilmez olur.
+
+6. MEVZUAT MADDE NUMARALARI — kararlar kadar dikkatli ol:
+
+   - KVKK madde numarası (m.10, m.11, m.12/5 vb.): eğitim verinden
+     iyi hatırlanır ama yine de düzenli kontrol et. Bu plugin'in
+     core mevzuat çerçevesi olduğu için kullanıcı doğruluğa güvenir.
+
+   - TBB Meslek Kuralları + 1136 sayılı Avukatlık Kanunu: İKİ AYRI
+     KAYNAK. m.36 hem Av.K.'da (sır saklama yasağı) hem TBB MK'da
+     (yakın madde) geçer — KARIŞTIRMA RİSKİ YÜKSEK. Doğrulanmış:
+     "TBB Meslek Kuralları m.37 = müvekkil sırrı". Doğrulanmamış
+     numaraları [doğrulanmalı] etiketiyle ver.
+
+   - TBB Reklam Yasağı Yönetmeliği: TBB Meslek Kuralları'ndan AYRI
+     bir Yönetmeliktir. "TBB MK m.55-61 reklam" gibi atıflar
+     güvenilmez — birincil kaynak Yönetmeliktir; ilgili TBB MK
+     maddeleri m.7/8/12 civarı (Aralık 2023 değişikliği) ama
+     numara veriyorsan [doğrulanmalı] etiketi şart.
+
+   - Yargıtay/Danıştay madde atıfları: KVKK için tasarlanan bu
+     pluginde gereksizdir; gerekirse kullanıcıyı yönlendir.
 ```
 
 ## Pratik Test
