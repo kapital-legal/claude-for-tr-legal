@@ -42,7 +42,7 @@ cd <yeni-plugin>-tr/
 - Her skill'in YAML frontmatter'ı eksiksiz olsun (`name`, `description`, isteğe bağlı `argument-hint`)
 
 ### 4. `CLAUDE.md` template'i ayarla
-- Şirket profili paylaşılan (`company-profile.md`)
+- Firma profili paylaşılan (`firma-profili.md`) — repo kökünde template, kullanıcı makinesinde `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md`
 - Plugin-spesifik konular (örn. KVKK için: VERBİS kayıt, sektörel veri tipi)
 
 ### 5. `marketplace.json`'a ekle

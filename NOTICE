@@ -1,0 +1,32 @@
+Claude for TR Legal
+Copyright 2026 Kapital Legal
+
+This product is a derivative work of:
+
+  claude-for-legal
+  Copyright 2026 Anthropic, PBC
+  Licensed under the Apache License, Version 2.0
+  Source: https://github.com/anthropics/claude-for-legal
+
+The repository structure, plugin manifest format (`.claude-plugin/`),
+skill organization pattern (`skills/<name>/SKILL.md`), cold-start
+interview pattern, and "draft for attorney review" disclaimer
+discipline are adapted from Anthropic's claude-for-legal.
+
+This derivative work adapts the architectural patterns and conventions
+to Turkish legal practice (KVKK, SMK, TTK, TBB Meslek Kuralları, etc.).
+Plugin content, terminology, legal framing, and example outputs are
+original to this repository or contributed by the community.
+
+Modifications include but are not limited to:
+- Replacement of US/UK legal framework references (FMLA, USPTO, GDPR,
+  ABA) with Turkish equivalents (4857 İş Kanunu, TÜRKPATENT, KVKK, TBB)
+- Removal of all third-party MCP server dependencies
+- Translation of all user-facing strings into Turkish
+- New plugin: `kvkk-uyum-tr` (originally implemented for this project)
+- New shared references: TBB Meslek Kuralları özet, baro danışma notu,
+  karar atıf kuralları (halüsinasyon disiplini)
+
+The Apache License, Version 2.0 governs use, reproduction, and
+distribution of this work. See the LICENSE file in this repository
+for the full license text.

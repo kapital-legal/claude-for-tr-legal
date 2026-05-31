@@ -1,11 +1,19 @@
 # KVKK Pratik Profili
 
+<!--
+  Bu template'in yapısı [anthropics/claude-for-legal/privacy-legal/CLAUDE.md]
+  dosyasından uyarlanmıştır (Apache 2.0). Bölümlendirme deseni korunmuş,
+  içerik tamamen Türk hukukuna (KVKK m.10/11/12/13, VERBİS, TBB Meslek
+  Kuralları) göre yeniden yazılmıştır. Atıf yükümlülüğü için repo kökündeki
+  NOTICE dosyasına bakınız.
+-->
+
 > Bu dosya bir TEMPLATE'dir. Cold-start interview tamamlandığında `~/.claude/plugins/config/claude-for-tr-legal/kvkk-uyum-tr/CLAUDE.md` konumuna doldurulmuş halde yazılır.
 > [PLACEHOLDER] etiketleri interview sırasında değiştirilir.
 
 ## 1. Büro / Şirket Profili
 
-Şirket bilgileri **paylaşılan profilde** saklanır: `~/.claude/plugins/config/claude-for-tr-legal/company-profile.md`.
+Şirket bilgileri **paylaşılan firma profilinde** saklanır: `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md`. Bu dosya tüm `claude-for-tr-legal` plugin'lerinin ortak referansıdır; cold-start-interview tarafından oluşturulur ve okunur.
 
 Bu dosya, sadece KVKK pratiğine özel detayları içerir.
 

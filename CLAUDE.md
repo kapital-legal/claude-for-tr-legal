@@ -2,6 +2,8 @@
 
 Bu dosya, repo üzerinde çalışan geliştiriciler (insan veya AI) için yönlendirme verir. Plugin kullanıcıları için ana doküman [README.md](README.md)'dir.
 
+> **Türev Eser Notu:** Bu dosyanın yapı/format kalıbı (geliştirici dokümanı + repo felsefesi formatı), [anthropics/claude-for-legal](https://github.com/anthropics/claude-for-legal) projesinden uyarlanmıştır. İçerik Türk hukukuna ve Kapital Legal'in sponsorluk pozisyonuna göre yeniden yazılmıştır. Apache 2.0 lisans yükümlülükleri için `LICENSE` ve `NOTICE` dosyalarına bakınız.
+
 ## Repo Felsefesi
 
 1. **Anthropic'in iskeletini koru, içeriği Türkçeleştir.** Plugin yapısı (`.claude-plugin/plugin.json` + `skills/*/SKILL.md` + cold-start interview deseni) Anthropic ile birebir aynı kalır. Sadece hukuki içerik, terminoloji ve veri kaynakları Türkçeleşir.
@@ -10,27 +12,47 @@ Bu dosya, repo üzerinde çalışan geliştiriciler (insan veya AI) için yönle
 
 3. **Veri kaynakları açık ve doğrulanabilir.** Her karar/madde atıfı kaynağıyla birlikte verilir. Kullanıcının resmi kaynaklardan (kvkk.gov.tr, Resmi Gazete vb.) sağladığı içerik öncelendir. Model eğitim verisinden gelen atıflar `[doğrulanmalı]` etiketi taşır. Karar metinlerinin URL'i her zaman dahil edilmelidir.
 
-4. **Paylaşılan şirket profili.** Anthropic'in `company-profile.md` deseni korunur: ilk plugin'i kuran kullanıcı şirket bilgilerini girer, sonraki plugin'ler okur. Bu Kapital Legal gibi çok partner'lı bürolar için kritik — Sinem KVKK plugin'i kurar, Muhittin marka plugin'i kurarken aynı büro bilgisi otomatik geçer.
+4. **Paylaşılan firma profili — kendi mekanizmamız.** Bu repo, Anthropic'in plugin başına ayrı CLAUDE.md tutmasının üstüne **kendi paylaşım mekanizmasını** kurar:
 
-5. **TBB Meslek Kuralları gözetilir.** Her plugin'in `references/` klasöründe ilgili TBB kurallarına atıf bulunur. Müvekkil mahremiyeti, çıkar çatışması, avukatlık tekeli prensipleri ihlal eden hiçbir çıktı üretilmez.
+   - **Paylaşılan profil:** `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md` (kök seviye, plugin-bağımsız)
+   - **Plugin-spesifik profil:** `~/.claude/plugins/config/claude-for-tr-legal/<plugin>/CLAUDE.md` (her plugin için ayrı)
+   - **Akış:** İlk kurulan plugin'in `cold-start-interview` skill'i önce firma profilini kontrol eder. Yoksa kullanıcıdan büro bilgilerini toplar ve **paylaşılan dosyaya** yazar. Sonra plugin-spesifik soruları sorar ve **plugin-spesifik dosyaya** yazar. Sonraki plugin'lerin `cold-start-interview`'u paylaşılan dosyayı okur, kullanıcıya özet gösterip onaylatır ve şirket sorularını **tekrar sormaz** — yalnızca plugin-spesifik sorulara odaklanır.
+   - **Implementation referansı:** `kvkk-uyum-tr/skills/cold-start-interview/SKILL.md` (Adım 0 ve Adım 1)
+   - **Template:** `references/firma-profili-template.md` (repo kökünde)
+
+5. **TBB Meslek Kuralları gözetilir.** Repo kök seviyede `references/tbb-meslek-kurallari-ozet.md` var. Plugin geliştirenler PR'larında TBB kontrollerini açıkça not etmelidir.
 
 ## Klasör Konvansiyonları
 
 ```
-<plugin-adı>-tr/
-  .claude-plugin/plugin.json     ← {name, version, description, author}
-  CLAUDE.md                       ← practice profile template (cold-start doldurur)
-  README.md                       ← plugin tanıtım + skill listesi
-  skills/
-    cold-start-interview/SKILL.md
-    <skill-adı>/SKILL.md
-  references/                     ← templateler, mevzuat özetleri, emsal kararlar
-  hooks/                          ← (opsiyonel) lifecycle hooks
-  agents/                         ← (opsiyonel) sub-agent tanımları
+claude-for-tr-legal/                     ← repo kök
+  .claude-plugin/marketplace.json        ← marketplace metadata (plugin listesi)
+  LICENSE                                 ← Apache 2.0
+  NOTICE                                  ← Apache 2.0 m.4 atıf yükümlülüğü
+  README.md, QUICKSTART.md, KATKI.md     ← kullanıcı dokümanları
+  CLAUDE.md                               ← bu dosya (geliştirici notları)
+
+  references/                             ← REPO KÖKÜNDE paylaşılan referans dosyalar
+    firma-profili-template.md
+    tbb-meslek-kurallari-ozet.md
+    karar-atif-kurallari.md
+    baro-danisma-notu.md
+
+  <plugin-adı>-tr/                        ← her plugin kendi klasöründe
+    .claude-plugin/plugin.json            ← {name, version, description, author}
+    CLAUDE.md                             ← plugin'e özel practice profile template
+    README.md                             ← plugin tanıtımı + skill listesi
+    skills/
+      cold-start-interview/SKILL.md
+      <skill-adı>/SKILL.md
+    hooks/                                ← (opsiyonel) lifecycle hooks
+    agents/                               ← (opsiyonel) sub-agent tanımları
 ```
 
+**Önemli karar:** `references/` klasörü **yalnızca repo kökünde** yaşar; plugin klasörlerinin içine `references/` koymuyoruz. Bu, Anthropic'in resmi yapısıyla uyumludur. Plugin başına özel veri (örn. KVKK kararı şablonları) gerekirse `kvkk-uyum-tr/data/` veya plugin'e özel başka bir alt klasör kullanılabilir — ama bu paylaşılan referans **değildir**.
+
 **İsimlendirme:**
-- Plugin adları: küçük harf, tire ile ayrılmış, `-tr` soneki
+- Plugin adları: küçük harf, tire ile ayrılmış, `-tr` soneki (örn. `kvkk-uyum-tr`)
 - Skill adları: küçük harf, tire ile ayrılmış, Türkçe fiil tabanı tercih (örn. `aydinlatma-metni-uretici`, `karar-analizi`)
 - Türkçe karakter (ı, ş, ğ, ü, ç, ö) **plugin/skill adlarında kullanılmaz** (filesystem uyumu) ama YAML/markdown içeriğinde elbette kullanılır
 
@@ -41,7 +63,7 @@ Bu dosya, repo üzerinde çalışan geliştiriciler (insan veya AI) için yönle
 name: skill-adı
 description: >
   Bu skill ne yapar (1-2 cümle). Hangi kullanıcı söyleminde tetiklenir.
-  Örn: "ilgili kişi başvurusu", "DSAR yanıtla", "30 günlük süreyi takip et"
+  Örn: "ilgili kişi başvurusu", "veri sahibi talebi", "30 günlük süreyi takip et"
 argument-hint: "[--bayrak açıklaması]"
 ---
 
@@ -57,12 +79,15 @@ argument-hint: "[--bayrak açıklaması]"
 
 ## Çıktı formatı
 - Avukat onayına hazır taslak
-- Kaynak gösterimi: [SMK m.X], [Yargıtay 11.HD, X.X.2026 E.YYYY/N K.YYYY/N]
-- Belirsizlik durumunda konservatif varsayılan + [verify] etiketi
+- Kaynak gösterimi: [SMK m.X], [KVKK m.Y], [Yargıtay 11.HD, X.X.2026 E.YYYY/N K.YYYY/N]
+- Belirsizlik durumunda konservatif varsayılan + `[doğrulanmalı]` etiketi
+- Karar atıfı verirken `references/karar-atif-kurallari.md` zorunlu kuralına uyulur
 
 ## TBB Meslek Kuralları uyumu
 İlgili kural numaraları + tetikleyici kontroller
 ```
+
+**Etiket disiplini (zorunlu):** Repo genelinde tek belirsizlik etiketi kullanılır: **`[doğrulanmalı]`**. İngilizce `[verify]` veya başka varyantlar kullanılmaz. Bu, kullanıcının ne yapması gerektiğini netleştirir ve tutarsızlık tetiklemez.
 
 ## Veri Kaynağı İlkesi
 
@@ -72,11 +97,11 @@ Bu repo, **herhangi bir üçüncü taraf MCP sunucusunu gömmez veya zorunlu kı
 
 2. **Kullanıcı girdisi** — Skill'ler kullanıcının kopyalayıp yapıştırdığı karar metnini veya verdiği URL'i `WebFetch` ile çekip analiz eder. Bu, repo'ya bağımlılık yaratmaz.
 
-3. **Opsiyonel — kullanıcının kendi araçları** — Kullanıcı Claude Cowork'te (veya başka yerde) kendi seçtiği bir araç kurmuşsa Claude o aracı kullanabilir. Skill başında availability check yapılır; yoksa skill 1+2 modunda çalışır, hata vermez.
+3. **Opsiyonel — kullanıcının kendi araçları** — Kullanıcı Claude.ai/Cowork'te (veya başka yerde) kendi seçtiği bir araç kurmuşsa Claude o aracı kullanabilir. Skill başında availability check yapılır; yoksa skill 1+2 modunda çalışır, hata vermez.
 
 **Skill geliştirirken:**
 - Hiçbir spesifik MCP aracı adına sabit bağımlılık yazma (örn. `mcp__falanca__filan` çağrısı yerine "kullanıcı bir karar veritabanı aracı kurduysa onu kullan" şeklinde koşullu kontrol).
-- Karar atıfı eklerken `[doğrulanmalı]` etiketi default olsun.
+- Karar atıfı eklerken **spesifik karar numarası uydurma** — `references/karar-atif-kurallari.md` sert kuralına uyulur.
 - Kullanıcıyı `https://www.kvkk.gov.tr` veya ilgili resmi kaynağa yönlendir.
 
 ## Geliştirici Komutları

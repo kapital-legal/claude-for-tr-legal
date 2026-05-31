@@ -19,7 +19,7 @@
 
 ### Doğru ve Tam Bilgi
 - **TBB MK m.5, m.27:** Avukat müvekkiline yanıltıcı bilgi vermez, gerçeği saklamaz.
-- **Plugin etkisi:** Plugin "[verify]" etiketiyle belirsiz/training data kaynaklı bilgileri işaretlemelidir. Belirsizliği gizlememelidir.
+- **Plugin etkisi:** Plugin `[doğrulanmalı]` etiketiyle belirsiz/training data kaynaklı bilgileri işaretlemelidir. Belirsizliği gizlememelidir.
 
 ### Reklam ve Tanıtım
 - **TBB MK m.55-61:** Avukatın kendisini tanıtırken sınırları var.
@@ -42,7 +42,7 @@ Her skill çıktısında:
 - [ ] **Avukat onayı disclaimer'ı** mevcut mu? ("Bu bir taslaktır, hukuki tavsiye değildir.")
 - [ ] **Müvekkil ismi/PII** içermiyor mu? (Anonim referanslar mı?)
 - [ ] **Kaynak gösterimi** her madde/karar atfında var mı?
-- [ ] **Belirsizlik etiketi `[verify]`** training data kaynaklı bilgilerde kullanılmış mı?
+- [ ] **Belirsizlik etiketi `[doğrulanmalı]`** training data kaynaklı bilgilerde kullanılmış mı?
 - [ ] **Reklam unsuru** içermiyor mu? (Sonuç garantisi, övgü)
 - [ ] **TBB Meslek Kuralları** ile çelişen önerme yok mu?
 

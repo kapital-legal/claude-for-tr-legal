@@ -32,7 +32,7 @@ Kullanıcının profilinden veya soruyla:
 
 Kullanıcı önceden kayıtlıysa skor: **Kayıtlı / Yenileme gerekli / Kayıtlı olmalıydı.**
 
-> **Not:** Eşik değerleri her yıl KVKK tarafından güncellenir. Plugin training data'ya göre cevap verir; sonuç `[verify]` etiketi taşır. Doğrulama için: https://www.kvkk.gov.tr
+> **Not:** Eşik değerleri her yıl KVKK tarafından güncellenir. Plugin training data'ya göre cevap verir; sonuç `[doğrulanmalı]` etiketi taşır. Doğrulama için: https://www.kvkk.gov.tr
 
 ### 2. Veri envanteri kontrol
 
@@ -89,7 +89,7 @@ Profil son güncelleme tarihinden 6 aydan fazla geçtiyse → 🟡 uyar.
 
 📌 Kayıt Zorunluluğu Durumu:
   ✓ Şirketinin kayıt zorunluluğu VAR
-  Dayanak: Çalışan sayısı > 50 (74 çalışan) [verify]
+  Dayanak: Çalışan sayısı > 50 (74 çalışan) [doğrulanmalı]
   Mevcut durum: Kayıtlı (son güncelleme: 2025-09-12)
 
 📋 Veri Envanteri (24 kayıt incelendi):

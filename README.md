@@ -95,6 +95,22 @@ Bu repo **kendi başına resmi karar veritabanı entegrasyonu içermez**. Plugin
 - Resmi Gazete: https://www.resmigazete.gov.tr
 - UYAP Emsal Karar: https://emsal.uyap.gov.tr
 
+## Paylaşılan Firma Profili (Çok Plugin'li Bürolar İçin)
+
+`claude-for-tr-legal` repo'su şu paylaşım mekanizmasını kullanır:
+
+- **Paylaşılan profil dosyası:** `~/.claude/plugins/config/claude-for-tr-legal/firma-profili.md`
+- İlk kurulan plugin'in cold-start interview'u bu dosyayı oluşturur (büro adı, yargı çevresi, sektör, bağlı baro vb.).
+- Sonraki plugin'lerin cold-start interview'u **önce bu dosyayı kontrol eder**; varsa kullanıcıya özet gösterip onaylatır ve büro sorularını tekrar sormaz.
+- Sadece plugin-spesifik sorular (örn. KVKK için VERBİS durumu, marka plugin'i için TÜRKPATENT sicil no) plugin başına ayrı dosyada saklanır.
+
+> 💡 Çok partner'lı bürolarda (örn. Sinem KVKK plugin'i kurar, Muhittin sonra marka plugin'i kurar) bu mekanizma sayesinde her partner aynı büro bilgisini yeniden girmek zorunda kalmaz.
+
+Firma profilini güncellemek için:
+```
+/<aktif-plugin>:cold-start-interview --firma-guncelle
+```
+
 ## Bağımlılıklar
 
 - **Claude Code** veya Claude Cowork (Pro/Max abonelik ya da API kredisi) — **tek zorunluluk**
