@@ -93,7 +93,7 @@ Kullanıcı onaylayana kadar devam etme.
 
 ### Açılış (3-4 satır)
 
-> **`kvkk-uyum-tr` KVKK programını yöneten kişiler için — aydınlatma metni, ilgili kişi başvurusu, VERBİS, ihlal triajı, risk değerlendirmesi, karar analizi.** Sen avukat mısın, KVK uzmanı mı, DPO mu?
+> **`kvkk-uyum-tr` KVKK programını yöneten kişiler için — aydınlatma metni, ilgili kişi başvurusu, VERBİS, ihlal triajı, risk değerlendirmesi, karar analizi.** Sen avukat mısın, KVK uzmanı mı, **DPO** (Türk pratiğinde **İrtibat Kişisi / KVK Uzmanı**; KVKK'da GDPR m.37 türü "DPO" yasal unvanı yoktur — `Veri Sorumlusu Temsilcisi` ve `İrtibat Kişisi` ayrı kavramlardır) musun?
 >
 > **2 dakika** = rol, hangi tarafta olduğun (sorumlu/işleyen), birincil yargı çevresi + güvenli varsayılanlar. **15 dakika** = playbook pozisyonların, risk değerlendirme şablonun, veri envanteri seedi, sektör detayı.
 

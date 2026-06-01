@@ -65,6 +65,16 @@ Plugin yüklendikten sonra kapatıp açmadan komutlar görünmez.
 
 Bu, sizin bürodaki KVKK pratiğini öğrenir ve `~/.claude/plugins/config/claude-for-tr-legal/kvkk-uyum-tr/CLAUDE.md` dosyasına yazar. Diğer tüm skill'ler buradan okur.
 
+> 🪟 **Windows kullanıcıları için dosya yolları:** macOS/Linux'ta `~/.claude/...` olarak gösterilen tüm yollar, Windows'ta `%USERPROFILE%\.claude\...` (yani `C:\Users\<kullanıcı-adı>\.claude\...`) altındadır. Eşleştirme:
+>
+> | macOS / Linux | Windows |
+> |---|---|
+> | `~/.claude/claude-for-tr-legal/firma-profili.md` | `C:\Users\<kullanıcı>\.claude\claude-for-tr-legal\firma-profili.md` |
+> | `~/.claude/plugins/config/claude-for-tr-legal/kvkk-uyum-tr/CLAUDE.md` | `C:\Users\<kullanıcı>\.claude\plugins\config\claude-for-tr-legal\kvkk-uyum-tr\CLAUDE.md` |
+> | `~/.claude/plugins/cache/claude-for-tr-legal/kvkk-uyum-tr/<sürüm>/` | `C:\Users\<kullanıcı>\.claude\plugins\cache\claude-for-tr-legal\kvkk-uyum-tr\<sürüm>\` |
+>
+> Plugin komutları (`/plugin install`, `/kvkk-uyum-tr:cold-start-interview` vb.) **tüm platformlarda aynı** şekilde çalışır — sadece dosyaları **dışarıdan** Explorer/Finder ile açmak istediğinizde yol farkı gündeme gelir. **`.claude`** klasörü Windows'ta gizli görünebilir; Explorer → "Görünüm" → "Gizli öğeler" açılırsa ortaya çıkar. Path ayracı (`/` vs `\`) skill çıktılarında **macOS biçiminde** sunulur; Windows'ta kopyalarken `\` ile değiştirin.
+
 ### 5. Bir görev çalıştır
 ```
 /kvkk-uyum-tr:aydinlatma-metni-uretici

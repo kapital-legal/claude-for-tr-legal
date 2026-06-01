@@ -8,6 +8,8 @@
 
 Başka hiçbir üçüncü taraf araç zorunlu değildir. Plugin tüm temel işlevleri model + kullanıcının sağladığı içerikle yürütür.
 
+> 🪟 **Windows kullanıcıları:** Bu doküman boyunca dosya yolları macOS/Linux biçiminde (`~/.claude/...`) yazılmıştır. Windows karşılığı `%USERPROFILE%\.claude\...` (yani `C:\Users\<kullanıcı-adı>\.claude\...`) altındadır. Skill komutları her platformda aynıdır; sadece dosyayı Explorer'dan açarken `~/` yerine `C:\Users\<sen>\` koyun ve `/` ayracını `\` yapın. `.claude` klasörü Windows'ta varsayılan gizli olduğundan Explorer'da **Görünüm → Gizli öğeler** açık olmalı.
+
 ## Kurulum
 
 ### 1. Marketplace'i ekle

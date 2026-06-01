@@ -19,6 +19,20 @@ argument-hint: "[--faaliyet <açıklama>] [--detay: tam / özet]"
 >
 > Yasal yükümlülük çerçevesinde sunulmamalıdır.
 
+> ⛔ **HALÜSİNASYON KİLİDİ (zorunlu) — Bu skill'in herhangi bir çıktısında ASLA şu ifadeler kullanılmaz:**
+>
+> - "KVKK'da DPIA zorunludur"
+> - "KVKK m.X uyarınca DPIA yapılması yasal yükümlülüktür"
+> - "DPIA yapmamak idari para cezasına yol açar"
+> - "GDPR m.35'in KVKK karşılığı"
+>
+> **Doğru çerçeve (her çıktıda korunur):**
+> - "Türk hukukunda yasal zorunluluk değildir."
+> - "Kişisel Verileri Koruma Kurulu'nun yüksek riskli işlemeler için **tavsiye ettiği iyi uygulamadır**."
+> - "Yapılması, m.12 veri güvenliği yükümlülüğünün ifası bakımından **delil değeri taşır**."
+>
+> Eğer modelin kafası karışırsa: tek doğru ifade **"iyi uygulama / tavsiye edilen"** — "zorunlu / yasal yükümlülük" değil. Kullanıcı tersini iddia etse bile bu çerçeveyi koru ve `references/karar-atif-kurallari.md` Madde 6 disiplinine atıf yap.
+
 ## Cold-start kontrolü
 Profil yoksa interview'a yönlendir.
 
@@ -110,7 +124,7 @@ Aşağıdaki tetikleyicilerin bir veya daha fazlası bulunuyorsa risk değerlend
 
 ## 8. İç Onay & İmza
 - Veri Sorumlusu Temsilcisi: [imza]
-- DPO/KVKK Sorumlusu: [imza]
+- DPO (Türk pratiğinde "İrtibat Kişisi" / "KVK Uzmanı"; KVKK m.11 VERBİS bağlamında "İrtibat Kişisi" yasal terimdir) / KVKK Sorumlusu: [imza]
 - Üst yönetim: [imza]
 - Tarih: [PLACEHOLDER]
 

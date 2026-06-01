@@ -101,7 +101,7 @@ Standart yapı:
 **Açıklama:** [Net gerekçe]
 
 ## 4. İtiraz Yolu
-Bu cevabımızdan tatmin olmazsanız, KVKK m.14 uyarınca cevabımızın tebliğinden itibaren 30 gün, başvuru tarihinden itibaren 60 günü geçmemek üzere Kişisel Verileri Koruma Kurulu'na şikayet hakkınız vardır (https://kvkk.gov.tr).
+Bu cevabımızdan tatmin olmamanız veya cevabımızı yetersiz bulmanız hâlinde, KVKK m.14 uyarınca **cevabımızı öğrendiğiniz tarihten itibaren 30 gün ve her hâlükârda başvuru tarihinden itibaren 60 günü geçmemek üzere** Kişisel Verileri Koruma Kurulu'na şikâyette bulunma hakkınız saklıdır (https://kvkk.gov.tr).
 
 Saygılarımızla,
 [Veri Sorumlusu] / [Yetkili Kişi]
